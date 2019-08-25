@@ -2,7 +2,7 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
 
-const firebaseConfig = {
+export const firebaseConfig = {
     apiKey: "AIzaSyCLdA_EdjKxOcI6xVS2a7PEPXs_bFXchXE",
     authDomain: "music-app-a0ba5.firebaseapp.com",
     databaseURL: "https://music-app-a0ba5.firebaseio.com",
@@ -14,5 +14,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 firebase.firestore().settings({ timestampsInSnapshots: true });
+
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
 
 export default firebase;

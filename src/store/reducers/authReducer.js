@@ -33,6 +33,12 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 authError: action.err.message
             }
+        case types.LOGIN_SUCCESS_GOOGLE:
+            console.log('LOGIN_SUCCESS_GOOGLE')
+            return {
+                ...state,
+                authError: null
+            }
         default :
             return state;
     }

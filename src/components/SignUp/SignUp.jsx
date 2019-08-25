@@ -4,20 +4,19 @@ import './SingUp.css'
 import { Socialnetwork } from '../Socialnetwork/Socialnetwork'
 import { Error } from "../Error/Error"
 import { connect } from 'react-redux'
-import { singUp } from '../../store/actions/authActions'
+import { singUp, googleLogin } from '../../store/actions/authActions'
 
 
 
 class SingUp extends Component {
     state = {
-        disabledBtn: false,
         email: '',
         password: '',
         firstName: '',
         lastName: ''
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate = (prevProps, prevState) => {
         if (prevProps !== this.props && !this.props.authError) {
             this.props.history.push(`user/${this.props.auth.uid}`)
         }
@@ -37,22 +36,14 @@ class SingUp extends Component {
 
     render() {
         const { authError } = this.props;
-        const { disabledBtn } = this.state;
+        const { email, password, firstName, lastName } = this.state;
         
+        const disabledBtn = email.length > 0 && password.length > 0 && firstName.length && lastName.length ? false : true;
         return (
             <div className='singup_container_wrapper'>
                 <h1>Ready to sign up?</h1>
                 <div className='main_singup'>
-                    <Socialnetwork 
-                        text='Facebook'
-                        img='https://img.icons8.com/color/48/000000/facebook-circled.png'
-                        class='icon_facebook'
-                    />
-                    <Socialnetwork
-                        text='Google'
-                        img='https://img.icons8.com/color/48/000000/google-logo.png'
-                        class='icon_google'
-                    />
+                    <Socialnetwork {...this.props} />
                 </div>
 
                 <form className='form_container' onSubmit={this.handleSubmit}>
@@ -73,7 +64,6 @@ class SingUp extends Component {
 
 
 const mapStateToProps = state => {
-    console.log(state)
     return {
         auth: state.firebase.auth,
         authError: state.auth.authError
@@ -82,7 +72,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        singUp: (newUser) => dispatch(singUp(newUser))
+        singUp: newUser => dispatch(singUp(newUser)),
+        googleLogin: () => dispatch(googleLogin())
     }
 }
 
