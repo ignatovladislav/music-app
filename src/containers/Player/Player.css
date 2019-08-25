@@ -1,0 +1,7 @@
+.player_container {
+    width: 100%;
+    background-color: #d6e0e4;
+    position: fixed;
+    bottom: 0;
+    border-top: 1px solid #d6e0e4;
+}

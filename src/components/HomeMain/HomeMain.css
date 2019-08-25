@@ -1,0 +1,20 @@
+.home_container {
+    margin: 7% 0 2% 0;
+    position: relative;
+    text-align: center;
+}
+
+.home_container > iframe {
+    width: 100%;
+    height: 550px;
+}
+
+.picture_slide {
+    width: 60%;
+    margin: 0 auto;
+    height: 600px;
+}
+
+.slick-arrow {
+    display: none;
+}

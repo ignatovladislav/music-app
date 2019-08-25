@@ -1,0 +1,23 @@
+.login_and_registration_container {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    justify-content: space-around;
+    margin: 25px;
+}
+
+.logsing {
+    display: block;
+    border: 1px solid transparent;
+    font-weight: 700;
+    padding: 8px 24px;
+}
+
+.singup_container {
+    margin-left: 20px;
+    margin-right: 50px;
+}
+
+.logsing:hover {
+    border: 1px solid #fff;
+}

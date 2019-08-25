@@ -1,0 +1,33 @@
+.contatiner_top_item {
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;    
+}
+
+.charts {
+    width: 30%;
+    cursor: pointer;
+}
+
+
+.charts h3 {
+    text-align: center;
+}
+.charts p {
+    text-align: center;
+}
+
+.charts img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.charts:hover {
+    background-color: rgb(128, 111, 111);
+}
+
+.test {
+    background-color: red;
+    margin: 1%;
+}

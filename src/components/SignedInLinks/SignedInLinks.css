@@ -1,0 +1,23 @@
+.logout_and_profile_container {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    justify-content: space-around;
+    margin: 25px; 
+}
+
+.logout {
+    display: block;
+    border: 1px solid transparent;
+    font-weight: 700;
+    padding: 8px 24px;
+    cursor: pointer;
+}
+
+.profile_container {
+    margin-right: 35px;
+}
+
+.logout:hover {
+    border: 1px solid #fff;
+} 

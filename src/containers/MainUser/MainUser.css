@@ -1,0 +1,24 @@
+.main_container_chart h1{
+    text-align: center;
+} 
+
+.main_container_chart {
+    padding: 1%;
+    /* background-color: grey; */
+}
+
+.container_chart {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+
+.chart_song {
+    width: 25%;
+    /* flex-wrap: wrap; */
+}
+
+.artist_name {
+    margin: 0;
+}

@@ -1,0 +1,22 @@
+.footer_container {
+    width: 100%;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #fff;
+}
+
+.footer_container > .footer_container_ifraime {
+    margin-left: 1.5%;
+}
+
+.footer_container > .social_network {
+    width: 20%;
+    text-align: center;
+}
+
+.socnetw_img {
+    margin-right: 10%;
+    cursor: pointer;
+}

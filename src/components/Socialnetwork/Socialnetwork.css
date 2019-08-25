@@ -1,0 +1,21 @@
+.singup_socnetw {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.singup_socnetw > .icon_google .icon_facebook {
+    width: 10%;
+}
+
+.singup_socnetw > h3 {
+    font-size: 25px;
+    margin: 0 0 0 10px;
+}
+
+.singup_socnetw:hover {
+    border: 1px solid #fff;
+}
