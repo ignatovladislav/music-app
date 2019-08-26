@@ -3,8 +3,7 @@
 } 
 
 .main_container_chart {
-    padding: 1%;
-    /* background-color: grey; */
+    padding: 2% 1%;
 }
 
 .container_chart {
@@ -15,7 +14,8 @@
 }
 
 .chart_song {
-    width: 25%;
+    width: 15%;
+
     /* flex-wrap: wrap; */
 }
 

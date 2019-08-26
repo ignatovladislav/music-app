@@ -9,8 +9,7 @@ import { connect } from 'react-redux'
 
 class Header extends Component {
   render() {
-    const { auth, profile } = this.props;
-    console.log(this.props)
+    const { auth } = this.props;
     const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
   
     return (
@@ -23,10 +22,9 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => {
-  return{
+  return {
     auth: state.firebase.auth,
-    authError: state.auth.authError,
-    profile: state.firebase.profile
+    authError: state.auth.authError
   }
 }
 

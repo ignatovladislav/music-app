@@ -4,18 +4,19 @@ import { fetchToDos } from '../../store/actions/musicActions'
 import './MainUser.css';
 
 import Songs from '../../components/Songs/Songs';
+import { Sidebar } from '../Sidebar/Sidebar';
 
 export class MainUser extends Component {
   componentDidMount = () => {
     this.props.fetchData("https://cors-anywhere.herokuapp.com/https://api.deezer.com/chart");
   }
   render() {
-    const { songs, loading, error, auth } = this.props;
+    const { songs, loading, error } = this.props;
 
-    // console.log(auth)
     return (
       <div className='main_container_chart'>
         <h1>Hits</h1>
+        <Sidebar />
         <Songs tracks_top={songs.tracks} lazyload={loading} error={error} />
         <Songs albums_top={songs.albums} lazyload={loading} error={error} />
         <Songs artists_top={songs.artists} lazyload={loading} error={error} />
@@ -29,8 +30,7 @@ const mapStateToProps = state => {
     return{
       songs: state.music.songs,
       loading: state.music.loading,
-      error: state.music.error,
-      auth: state.firebase.auth
+      error: state.music.error
     }
 }
 

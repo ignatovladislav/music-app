@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom'
 const SignedInLinks = props => {
   const photo = props.auth.photoURL;
   const initials = props.profile.initials
-// console.log(initials)
   return (
     <div className='logout_and_profile_container'>
       {

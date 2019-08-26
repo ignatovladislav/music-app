@@ -9,7 +9,6 @@ import { singIn, googleLogin } from '../../store/actions/authActions'
 
 class Login extends Component {
     state = {
-        disabledBtn: true,
         email: '',
         password: '',
     }
@@ -22,8 +21,7 @@ class Login extends Component {
 
     handleChange = e => {
         this.setState({
-            [e.target.name] : e.target.value,
-            disabledBtn: false
+            [e.target.name] : e.target.value
         })
     }
 
@@ -35,8 +33,9 @@ class Login extends Component {
 
     render() {
         const { authError } = this.props;
-        const { disabledBtn } = this.state;
-        // console.log(this.props)
+        const { email, password } = this.state;
+        
+        const disabledBtn = email.length > 0 && password.length > 0 ? false : true;
         return (
         <div className='login_container_wrapper'>
             <h1>What will you listen to today?</h1>
