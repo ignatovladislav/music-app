@@ -1,31 +1,37 @@
-.sidebar_container {
+.sidebar_conainer {
+    width: 15%;
     height: 100%;
-    width: 17%;
     position: fixed;
-    left: 0;
-    top: 110px;
+    z-index: 2;
     padding: 2% 0;
-    border-right: 2px solid #fff;
+    border-right: 2px solid #fff; 
+}
+
+.sidebar_conainer > .sidebar_link {
+    display: block;
+    width: 80%;
 }
 
 .sidebar_item {
     cursor: pointer;
     margin-bottom: 10%;
-}
-
-
-.sidebar_item > span {
-    display: block;
+    width: 100%;
+    border-left: 5px solid transparent;
     font-size: 25px;
     font-weight: 700;
+    padding-left: 2%;
 }
 
-span:hover {
-    background-color: rgb(128, 111, 111);   
+
+.sidebar_link:hover {
+    background-color: rgb(224, 224, 224);   
+    color: #0269A4;
 }
 
-.active_link::before {
-    content: ""; 
-    border-left: 5px solid #fff;
-    margin-right: 10%;
+.active_link {
+    pointer-events: none;
 }
+
+.active_link {
+    border-left: 5px solid #0269A4;
+} 

@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 // import { Redirect } from 'react-router-dom'
 import './Login.css'
 
-import { Socialnetwork } from '../Socialnetwork/Socialnetwork'
-import { Error } from "../Error/Error"
+import { Socialnetwork } from '../../components/Socialnetwork/Socialnetwork'
+import { Error } from "../../components/Error/Error"
 import { connect } from 'react-redux'
 import { singIn, googleLogin } from '../../store/actions/authActions'
 
@@ -15,7 +15,7 @@ class Login extends Component {
 
     componentDidUpdate = (prevProps, prevState) => {
         if (prevProps !== this.props && !this.props.authError && this.props.auth.uid !== undefined) {
-            this.props.history.push(`user/${this.props.auth.uid}`)
+            this.props.history.push(`/user`)
         }
     }
 

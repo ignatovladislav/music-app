@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './Songs.css'
-import { Loading } from '../Loading/Loading'
-import { createTrackContainer, createAlbumContainer, createArtistContainer, createPlaylistContainer } from './create'
+import { Loading } from '../../Loading/Loading'
+import {  createTrackContainer, createAlbumContainer, createArtistContainer, createPlaylistContainer } from './create'
 
 export default class Songs extends Component {
     render() {

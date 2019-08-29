@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
 import './Player.css'
 
-export class Player extends Component {
+import { PlayerControls } from '../../components/PlayerComponents/PlayerControls/PlayerControls'
+import { PlayerTrack } from '../../components/PlayerComponents//PlayerTrack/PlayerTrack'
+import { PlayerOptions } from '../../components/PlayerComponents/PlayerOptions/PlayerOptions'
+
+export default class Player extends Component {
     render() {
         return (
             <div className='player_container'>
-                It is player
+                <PlayerControls />
+                <PlayerTrack />
+                <PlayerOptions />
             </div>
         )
     }

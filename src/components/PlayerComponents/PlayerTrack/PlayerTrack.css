@@ -1,0 +1,10 @@
+.player_track {
+    width: 40%;
+}
+
+.player_track > .track_heading {
+    display: flex;
+}
+.player_track > input {
+    width: 100%;
+}

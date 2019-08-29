@@ -37,18 +37,11 @@ const NextArrowMain = props => {
 }
 
 export const settings = {
-    // dots: false,
-    // infinite: true,
-    // slidesToShow: 3,
-    // slidesToScroll: 3,
-    // speed: 2000,
     dots: false,
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 3,
-    // autoplay: true,
     speed: 2000,
-    // autoplaySpeed: 2000,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />
 };

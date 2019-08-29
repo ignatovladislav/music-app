@@ -1,7 +1,8 @@
 import * as types from "../actionTypes";
 import axios from 'axios';
+import { addClass } from '../addClass';
 
-export const addToSongs = (payload) => console.log(payload) ({
+export const addToSongs = (payload) => ({
   type: types.ADD_SONGS,
   payload
 })
@@ -27,4 +28,18 @@ export const fetchToDos = url => dispatch => {
     .catch( error => {
       dispatch(itemsError(true));
     });
+};
+
+export const fetchGenreMusic = url => dispatch => {
+  dispatch(itemsLoading(true));
+  axios.get(url)
+  .then(response => {
+    const payload = response.data
+    addClass(payload.data)
+    dispatch({ type: types.ADD_SONGS_GENRE_MUSIC, payload });
+    dispatch(itemsLoading(false));
+  })
+  .catch( error => {
+    dispatch(itemsError(true));
+  });
 };

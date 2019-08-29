@@ -1,0 +1,10 @@
+.player_controls {
+    align-items: center;
+    display: flex;
+    width: 20%;
+}
+
+.player_controls > .player_controls_icon {
+    margin-right: 10%;
+    cursor: pointer;
+}
