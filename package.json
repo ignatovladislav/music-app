@@ -24,6 +24,7 @@
     "redux": "^4.0.4",
     "redux-firebase": "^0.3.3",
     "redux-firestore": "^0.8.0",
+    "redux-saga": "^1.0.5",
     "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1",
     "video-react": "^0.14.1"
