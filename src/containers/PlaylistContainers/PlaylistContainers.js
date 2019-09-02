@@ -49,7 +49,14 @@ export class PlaylistContainers extends Component {
                 {
                   Array.isArray(playlist_now)  ? playlist_now.map((el, index) => {
                     //   console.log(index)
-                    return <Item id={el.id} src={el.album.cover_small} artist={el.artist.name} title={el.title} preview={el.preview} index={index+1}/>
+                    return  <Item   
+                                id={el.id} 
+                                src={el.album.cover_small} 
+                                artist={el.artist.name} 
+                                title={el.title} 
+                                preview={el.preview}
+                                index={index+1}
+                            />
                   }) : <Loading />
                 }
                 </div>
