@@ -6,6 +6,7 @@ import { Playlist } from '../Songs/Playlist';
 
 export const ContainerToMusic = props => {
     const { songs, error } = props
+    console.log(props)
     return (
         <div className='conteiner_top_music'>
             {/* <Track tracks_top={songs.tracks} error={error} /> */}

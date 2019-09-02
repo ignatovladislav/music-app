@@ -18,7 +18,17 @@ export default (state = initilalState, action) => {
                 songs: action.payload
             }
 
+        case types.ADD_SONGS_SUCCESS: 
+                return {
+                    ...state,
+                    songs: action.payload
+                }
         case types.ADD_SONGS_GENRE_MUSIC: 
+            return {
+                ...state,
+                genreMusic: action.payload
+            }
+        case types.ADD_SONGS_GENRE_MUSIC_SUCCESS: 
             return {
                 ...state,
                 genreMusic: action.payload
@@ -32,7 +42,14 @@ export default (state = initilalState, action) => {
         }
         
         case types.PLAYLIST_NOW: {
-            console.log('click', action.payload)
+            // console.log('click', action.payload)
+            return {
+                ...state,
+                playlist_now: action.payload
+            };
+        }
+
+        case types.PLAYLIST_NOW_SUCCESS: {
             return {
                 ...state,
                 playlist_now: action.payload

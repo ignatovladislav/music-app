@@ -5,12 +5,9 @@ import Slider from "react-slick"
 import { settings } from '../../Slider/sliderSettings'
 import { Loading } from '../../Loading/Loading'
 import { connect } from "react-redux"
-// import {addToSongs} from '../../../store/actions/musicActions'
 
 const Album = props => {
-    
     const { songs } = props;
-    // console.log(songs)
     const handleClick = (e) => {
         console.log(e.target.id)
         props.history.push(`user/playlist/${e.target.id}`)

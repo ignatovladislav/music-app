@@ -16,7 +16,7 @@ export function* musicSaga() {
         });
         const songs = response.data;
 
-        yield put(actions.addToSongs(songs));
+        yield put(actions.addToSongsSuccess(songs));
 	} catch (error) {
 		yield put(actions.songsError(error));
 	}
@@ -30,58 +30,26 @@ export function* musicSagaGenre() {
             url: `${url}/genre`
         });
         const songs = response.data;
-        yield put(actions.addToSongsGenre(songs.data));
+        yield put(actions.addToSongsGenreSuccess(songs.data));
 	} catch (error) {
 		yield put(actions.songsError(error));
 	}
 }
 
-// export function* musicSagaGenre() {
-// 	try {
-// 		const response = yield call(axios, {
-//             method: "get",
-//             url: `${url}/genre`
-//         });
-//         const songs = response.data;
-//         yield put(actions.addToSongsGenre(songs.data));
-// 	} catch (error) {
-// 		yield put(actions.songsError(error));
-// 	}
-// }
-
 export function* playlistNowSaga(data) {
-    // yield console.log(data.payload)
+    console.log(data)
     const tracks = data.payload
-    // yield put(actions.nowPlaylist(songs.data));
 	try {
 		const response = yield call(axios, {
             method: "get",
             url: `${urlPlaylist}/${tracks}/tracks`
         });
         const playlist_track = response.data.data;
-        // console.log(response)
-        yield put(actions.nowPlaylist(playlist_track));
+        yield put(actions.playlistTrackListSuccess(playlist_track));
 	} catch (error) {
 		yield put(actions.songsError(error));
 	}
 }
-// export function* clickSongsSaga(data) {
-//     yield console.log(data.payload)
-//     // const res = data.payload;
-//     // yield console.log(data.payload)
-//     // const songId = data.payload;
-//     // yield put(actions.clickSongs(res));
-//     // const res = data.
-//     yield put(actions.clickSongs(data.payload))
-//     // try {
-//     //     const response = data.payload;
-//     //     console.log(response)
-//     //     yield put(actions.clickSongs(response))
-//     // } catch (error) {
-//     //     yield console.log(error)
-// 	// 	// yield put(actions.songsError(error));
-// 	// }
-// }
 
 export function* watcherMusicSaga() {
     yield takeEvery(ADD_SONGS, musicSaga);

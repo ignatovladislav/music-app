@@ -27,7 +27,7 @@ export class App extends Component {
             <Route path='/user'>
               <main id='main_context_user'>
                 <Route exact component={ Sidebar } />
-                <Route exact component={ Player } />
+                {/* <Route exact component={ Player } /> */}
                 <Route exact path='/user' component={ HomePageUser } />
                 <Route path='/user/expore' component={ Genre } />
                 <Route path='/user/playlist/:id' component={ PlaylistContainers } />

@@ -1,0 +1,29 @@
+.playlist_containers {
+    padding: 2% 5% 0 16%
+}
+
+.playlist_containers > .catalog_header > .info_playlist {
+    margin-bottom: 5%;
+    display: flex;
+    /* width: 100%; */
+    /* justify-content: center; */
+}
+
+.playlist_containers > .catalog_header > .info_playlist > .info_playlist_title {
+    font-size: 35px;
+    margin-left: 3%;
+}
+
+.info_playlist_title > p {
+    font-size: 18px;
+}
+
+.item {
+    border: 1px solid #fff;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    padding: 1%;
+    font-size: 20px;
+    margin-bottom: 2%;
+}

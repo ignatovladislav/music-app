@@ -1,8 +1,12 @@
 import * as types from "../actionTypes";
-import axios from 'axios'
 
 export const addToSongs = payload => ({
   type: types.ADD_SONGS,
+  payload 
+})
+
+export const addToSongsSuccess = payload => ({
+  type: types.ADD_SONGS_SUCCESS,
   payload 
 })
 
@@ -16,20 +20,21 @@ export const addToSongsGenre = payload => ({
   payload 
 })
 
-export const clickSongs = payload => ({
-  type: types.CLICK_SONGS,
+export const addToSongsGenreSuccess = payload => ({
+  type: types.ADD_SONGS_GENRE_MUSIC_SUCCESS,
   payload 
-});
+})
 
-export const nowPlaylist = payload => ({
+export const playlistTrackList = payload => ({
   type: types.PLAYLIST_NOW,
   payload 
 });
+
+export const playlistTrackListSuccess = payload => ({
+  type: types.PLAYLIST_NOW_SUCCESS,
+  payload 
+});
   
-export const clickSongsAct = payload => dispatch => {
-  // console.log(payload)
-  dispatch(clickSongs(payload));
-}
 
 // export const clickSongsAct = id => dispatch => ({
 //   // console.log(payload)
