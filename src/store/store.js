@@ -1,13 +1,8 @@
 import { createStore, applyMiddleware } from "redux";
-import reducer from "./reducer/reducer";
 import thunk from "redux-thunk";
+import rootReducer from "./reducers/rootReducer";
 
 export default createStore(
-  reducer,
-  {
-    songs: {},
-    loading: true,
-    error: false
-  },
+  rootReducer,
   applyMiddleware(thunk)
 );

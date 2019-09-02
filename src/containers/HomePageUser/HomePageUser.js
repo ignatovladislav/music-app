@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { fetchToDos } from '../../store/actions/musicActions'
+// import { addToSongs } from "../../store/actionTypes";
 import './HomePageUser.css';
 
 import { ContainerToMusic } from '../../components/deezerMusic/ContainerTopMusic/ContainerToMusic';
+import { Loading } from '../../components/Loading/Loading';
+import {addToSongs} from '../../store/actions/musicActions'
 
 export class HomePageUser extends Component {
-  componentDidMount = () => {
-    this.props.fetchData("https://cors-anywhere.herokuapp.com/https://api.deezer.com/chart");
+  componentDidMount() {
+    this.props.addToSongs()  
   }
 
   render() {
+    const { songs } = this.props;
     return (
       <div className='main_container_chart'>
-        <ContainerToMusic {...this.props}/>
+        {
+          songs ? <ContainerToMusic {...this.props}/> : <Loading />
+        }
       </div>
     )
   }
@@ -22,19 +27,14 @@ export class HomePageUser extends Component {
 const mapStateToProps = state => {
     return {
       songs: state.music.songs,
-      loading: state.music.loading,
       error: state.music.error,
       auth: state.firebase.auth,
       genreMusic: state.music.genreMusic,
+      track_now: state.music.track_now
     }
 }
 
-const mapDispatchToProps =  dispatch => {
-  return {
-    fetchData: url => dispatch(fetchToDos(url)),
-  };
-};
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePageUser);
+export default connect(mapStateToProps, {addToSongs})(HomePageUser);
 

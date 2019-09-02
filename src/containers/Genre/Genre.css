@@ -9,7 +9,8 @@
 }
 
 .genre_item {
-    background: linear-gradient(to right top, rgb(243, 239, 21) 0%, rgb(0, 152, 133));
+    /* background: linear-gradient(to right top, rgb(243, 239, 21) 0%, rgb(0, 152, 133)); */
+    background: linear-gradient(to right top, #16bffd 0%, #cb3066 100%);
     cursor: pointer;
     text-align: center;
     width: 20%;

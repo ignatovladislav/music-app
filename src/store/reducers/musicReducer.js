@@ -2,9 +2,11 @@ import * as types from "../actionTypes";
 
 const initilalState = {
   songs: {},
-  genreMusic: {},
-  loading: true,
-  error: false
+  genreMusic: [],
+  loading: null,
+  error: false,
+//   track_now: null,
+  playlist_now: null
 };
 
 
@@ -22,17 +24,18 @@ export default (state = initilalState, action) => {
                 genreMusic: action.payload
             }
 
-        case types.ITEMS_LOADING: {
+        case types.SONGS_LOADING: {
             return {
                 ...state,
-                loading: action.payload
+                loading: false
             };
         }
         
-        case types.ITEMS_ERROR: {
+        case types.PLAYLIST_NOW: {
+            console.log('click', action.payload)
             return {
                 ...state,
-                error: action.payload
+                playlist_now: action.payload
             };
         }
 

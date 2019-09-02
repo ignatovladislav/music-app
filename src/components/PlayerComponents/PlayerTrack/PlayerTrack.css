@@ -4,7 +4,34 @@
 
 .player_track > .track_heading {
     display: flex;
+    align-items: center;
+    /* justify-content: space-around; */
+    font-size: 20px;
 }
-.player_track > input {
+
+.player_track > .track_heading > .dash {
+   margin-right: 5%;
+   margin-left: 5%;
+}
+
+.player_track > .track_heading > .title {
+    margin-left: 10%;
+ }
+
+.player_track > .react-h5-audio-player {
     width: 100%;
+}
+
+.player_track > .react-h5-audio-player > .flex > .toggle-play-wrapper > a {
+    background-color: #000 !important;
+}
+
+.player_track > .react-h5-audio-player > .flex {
+    width: 25%;
+    background-color: #000 !important;
+    cursor: pointer;
+}
+
+.pause-icon {
+    box-shadow: rgb(0,0,0) 7px 0px 0px 0px inset !important;
 }

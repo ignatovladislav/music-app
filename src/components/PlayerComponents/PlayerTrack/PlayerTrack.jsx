@@ -1,21 +1,19 @@
 import React from 'react'
 import './PlayerTrack.css'
+import AudioPlayer from "react-h5-audio-player";
 
 export const PlayerTrack = props => {
+    const { src, title, artist } = props;
+    const title_art = title ? {display: 'block'} : {display: 'none'}
     return (
+        
         <div className='player_track'>
             <div className='track_heading'>
-                <div className='track_title'>title</div>
-                <div className='track_action'>Action</div>
+                <div className='track_title title'>{title}</div>
+                <div className='track_title dash' style={title_art}>—</div>
+                <div className='track_title artist'>{artist}</div>                  
             </div>
-            <div className='track_seekbar'>
-                <div className='counter_current'>00:00</div>
-                <div className='slider_track'>
-                    <div></div>
-                    <input type='range' />
-                </div>
-                <div className='counter_current_max'>00:00</div>
-            </div>
+            <AudioPlayer className='audioPlayer' src={src} />
         </div>
     )
 }

@@ -2,6 +2,7 @@
     align-items: center;
     display: flex;
     width: 20%;
+    justify-content: flex-end;
 }
 
 .player_controls > .player_controls_icon {

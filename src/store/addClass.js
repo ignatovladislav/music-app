@@ -2,10 +2,16 @@ export const arrayClassName = ['transfile', 'tranquil', 'red_ocean', 'shahabi', 
 
 
 export const addClass = payload => {
-    return payload = payload.map(item => {
+  if(payload !== undefined) {
+    // console.log(payload)
+    return payload = payload.map(element => {
+      
       let className = random(1, 7)
-      return item.className = arrayClassName[className]
+      return element.className = arrayClassName[className]
     })
+  }
+    //
+    // })
   }
   
   export const random = (min, max) => {

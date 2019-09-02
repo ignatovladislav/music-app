@@ -4,9 +4,7 @@ import './Sidebar.css'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-
 export class Sidebar extends Component {
-
     render() {
         const { location } = this.props;
 

@@ -14,14 +14,20 @@ import thunk from "redux-thunk";
 import { reduxFirestore, getFirestore } from 'redux-firestore'
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase'
 import firebase from './config/fbConfig'
+import { root } from "./store/saga/index";
+import createSagaMiddleware from "redux-saga";
+
+const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(rootReducer, 
     compose(
-        applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
+        applyMiddleware(sagaMiddleware, thunk.withExtraArgument({ getFirebase, getFirestore })),
         reactReduxFirebase(firebase, { userProfile: 'users', useFirestoreForProfile: true, attachAuthIsReady: true }),
         reduxFirestore(firebase)
-    )
+    )   
 )
+
+sagaMiddleware.run(root);
 
 store.firebaseAuthIsReady.then(() => {
     ReactDOM.render(

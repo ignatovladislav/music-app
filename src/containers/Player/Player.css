@@ -8,4 +8,5 @@
     padding: 1% 0 1% 5%;
     display: flex;
     border-top: 2px solid #fff;
+    align-items: center;
 }
