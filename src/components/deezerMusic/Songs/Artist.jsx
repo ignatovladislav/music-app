@@ -6,18 +6,20 @@ import { settings } from '../../Slider/sliderSettings'
 import { Loading } from '../../Loading/Loading'
 
 export const Artist = props => {
-    const { artists_top } = props
-
+    const { songs, history } = props
+    const handleClick = e => {
+        history.push(`/user/artist/${e.target.id}`)
+    }
     return (
         <div className='artists_top'>
             <h2>Popular artist</h2>
             <Slider {...settings} >
                 {
-                    artists_top ? artists_top.data.map(item => {
+                    songs.artists ? songs.artists.data.map(item => {
                         return (
-                            <div className='artists_top charts' key={item.id} id={item.id}>
-                                 <img src={item.picture_medium} alt='picture_tracks'/>
-                                <div>
+                            <div className='artists_top charts' key={item.id} id={item.id} onClick={handleClick}>
+                                 <img src={item.picture_medium} alt='picture_tracks' id={item.id} onClick={handleClick}/>
+                                <div id={item.id} onClick={handleClick}>
                                     <h3>{item.name}</h3>
                                 </div>
                             </div>

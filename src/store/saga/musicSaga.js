@@ -1,12 +1,14 @@
-import { takeEvery, takeLatest, call, put } from 'redux-saga/effects'
-import {  ADD_SONGS, ADD_SONGS_GENRE_MUSIC, PLAYLIST_NOW } from "../actionTypes"
+import { takeEvery, call, put } from 'redux-saga/effects'
+import {  ADD_SONGS, ADD_SONGS_GENRE_MUSIC, PLAYLIST_NOW, ALBUM_NOW, ARTIST_NOW } from "../actionTypes"
 import * as actions from '../actions/musicActions'
-// import { addClass } from '../addClass';
 
 import axios from "axios"
 
 const url = 'https://cors-anywhere.herokuapp.com/https://api.deezer.com'
 const urlPlaylist = 'https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist';
+const urlAlbum = 'https://cors-anywhere.herokuapp.com/https://api.deezer.com/album';
+const urlArtist = 'https://cors-anywhere.herokuapp.com/https://api.deezer.com/artist';
+const urlArtistTop50 = 'https://cors-anywhere.herokuapp.com';
 
 export function* musicSaga() {
 	try {
@@ -37,7 +39,6 @@ export function* musicSagaGenre() {
 }
 
 export function* playlistNowSaga(data) {
-    console.log(data)
     const tracks = data.payload
 	try {
 		const response = yield call(axios, {
@@ -51,8 +52,48 @@ export function* playlistNowSaga(data) {
 	}
 }
 
+export function* albumNowSaga(data) {
+    const album = data.payload;
+	try {
+		const response = yield call(axios, {
+            method: "get",
+            url: `${urlAlbum}/${album}`
+        });
+        const album_info = response.data
+        yield put(actions.albumTrackListSuccess(album_info));
+	} catch (error) {
+		yield put(actions.songsError(error));
+	}
+}
+
+export function* aristNowSaga(data) {
+    const artist = data.payload;
+	try {
+		const response = yield call(axios, {
+            method: "get",
+            url: `${urlArtist}/${artist}`
+        });
+        const artist_info = response.data // info artist
+        yield put(actions.artistInfoSuccess(artist_info));
+        try {
+            const response = yield call(axios, {
+                method: "get",
+                url: `${urlArtistTop50}/${artist_info.tracklist}`
+            });
+            yield put(actions.artistTopTrackSuccess(response.data));
+        } catch (error) {
+            yield put(actions.songsError(error));
+        }
+        
+	} catch (error) {
+        yield put(actions.songsError(error));
+	}
+}
+
 export function* watcherMusicSaga() {
     yield takeEvery(ADD_SONGS, musicSaga);
     yield takeEvery(ADD_SONGS_GENRE_MUSIC, musicSagaGenre);
     yield takeEvery(PLAYLIST_NOW, playlistNowSaga);
+    yield takeEvery(ALBUM_NOW, albumNowSaga);
+    yield takeEvery(ARTIST_NOW, aristNowSaga);
 }

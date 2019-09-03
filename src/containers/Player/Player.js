@@ -3,11 +3,11 @@ import './Player.css'
 
 import { PlayerControls } from '../../components/PlayerComponents/PlayerControls/PlayerControls'
 import { PlayerTrack } from '../../components/PlayerComponents//PlayerTrack/PlayerTrack'
-import { PlayerOptions } from '../../components/PlayerComponents/PlayerOptions/PlayerOptions'
+// import { PlayerOptions } from '../../components/PlayerComponents/PlayerOptions/PlayerOptions'
 import { connect } from "react-redux";
 
 class Player extends Component {
-    state = { track_now: null, index_track: null, track_now: null, next_track: null }
+    state = { track_now: null, index_track: null, next_track: null }
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.track_now !== this.props.track_now) {
@@ -18,7 +18,7 @@ class Player extends Component {
     filter = data => {
         data = data.data
         for (let i = 0; i < data.length; i++ ) {
-            if (data[i].id == this.props.track_now) {
+            if (data[i].id === this.props.track_now) {
                 console.log(i)
                 this.getNextTrack(data[i], data)
             }
@@ -28,14 +28,14 @@ class Player extends Component {
 
     getNextTrack = (trackNow, data) => {
         for (let i = 0; i < data.length; i++ ) {
-            if (data[i].id == trackNow.id) {
+            if (data[i].id === trackNow.id) {
                 this.getNextTrackP(i, trackNow, data)
             }
         }
     }   
     getNextTrackP = (num, trackNow, data) => {
         let next = num + 1
-        if (num == 9) {
+        if (num === 9) {
             next = 0
             this.setState({ index_track : num, track_now: trackNow, next_track: data[next] })
         } else {
@@ -46,18 +46,13 @@ class Player extends Component {
 
 
     handleClick = e => {
-        console.log(e.target.id)
-        if(e.target.id == 'next_songs') {
-            // console.log(this.state.next_track)
+        if(e.target.id === 'next_songs') {
             this.setState({ track_now: this.state.next_track })
         }
-        // console.log(e.target.id)
-        //  ?  : null
     }
   
     render() {
         const { track_now } = this.state;
-        // console.log(this.state)
         return (
             <div className='player_container'>
                 <PlayerControls handleClick={this.handleClick} />

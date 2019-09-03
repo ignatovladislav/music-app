@@ -12,6 +12,8 @@ import HomePageUser from './containers/HomePageUser/HomePageUser'
 import Genre from './containers/Genre/Genre'
 import Player from './containers/Player/Player'
 import PlaylistContainers from './containers/PlaylistContainers/PlaylistContainers';
+import AlbumContainers from './containers/AlbumContainers/AlbumContainers';
+import ArtistContainers from './containers/ArtistContainers/ArtistContainers';
 
 
 export class App extends Component {
@@ -31,6 +33,8 @@ export class App extends Component {
                 <Route exact path='/user' component={ HomePageUser } />
                 <Route path='/user/expore' component={ Genre } />
                 <Route path='/user/playlist/:id' component={ PlaylistContainers } />
+                <Route path='/user/album/:id' component={ AlbumContainers } />
+                <Route path='/user/artist/:id' component={ ArtistContainers } />
               </main>
             </Route>
           </Switch>

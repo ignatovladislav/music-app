@@ -10,7 +10,7 @@ const Album = props => {
     const { songs } = props;
     const handleClick = (e) => {
         console.log(e.target.id)
-        props.history.push(`user/playlist/${e.target.id}`)
+        props.history.push(`user/album/${e.target.id}`)
     }
     return (
         <div className='albums_top'>

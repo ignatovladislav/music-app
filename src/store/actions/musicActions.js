@@ -36,7 +36,27 @@ export const playlistTrackListSuccess = payload => ({
 });
   
 
-// export const clickSongsAct = id => dispatch => ({
-//   // console.log(payload)
-//   dispatch(clickSongs(payload));
-// })
+export const albumTrackList = payload => ({
+  type: types.ALBUM_NOW,
+  payload 
+});
+
+export const albumTrackListSuccess = payload => ({
+  type: types.ALBUM_NOW_SUCCESS,
+  payload 
+});
+
+export const artistInfo = payload => ({
+  type: types.ARTIST_NOW,
+  payload 
+});
+
+export const artistInfoSuccess = payload => ({
+  type: types.ARTIST_NOW_SUCCESS,
+  payload 
+});
+
+export const artistTopTrackSuccess = payload => ({
+  type: types.ARTIST_NOW_TOP_TRACK_SUCCESS,
+  payload 
+});

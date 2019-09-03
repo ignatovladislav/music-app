@@ -1,0 +1,40 @@
+.artist_containers {
+    padding: 2% 5% 0 16%;
+}
+
+.artist_containers > .catalog_header_artist > .info_artist {
+    margin-bottom: 5%;
+    display: flex;
+}
+
+.artist_containers > .catalog_header_artist > .info_artist > .info_artist_title  {
+    font-size: 35px;
+    margin-left: 3%;
+}
+
+.artist_containers > .catalog_header_items {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 2%;
+}
+
+.artist_containers > .item_artist {
+    width: 100%;
+    border: 1px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1%;
+    font-size: 20px;
+    margin-bottom: 2%;
+    cursor: pointer;
+}
+
+.artist_containers > .item_artist > .index_item_artist {
+    width: 25%;
+}
+
+.artist_containers > .item_artist:hover {
+    background-color: rgb(128, 111, 111);
+}

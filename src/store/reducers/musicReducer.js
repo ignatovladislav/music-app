@@ -4,9 +4,13 @@ const initilalState = {
   songs: {},
   genreMusic: [],
   loading: null,
-  error: false,
-//   track_now: null,
-  playlist_now: null
+  error: null,
+  playlist_now: null,
+  album_now: null,
+  album_now_success: null,
+  artist_now: null,
+  artist_now_success: null,
+  artist_now_top_50: null,
 };
 
 
@@ -42,7 +46,6 @@ export default (state = initilalState, action) => {
         }
         
         case types.PLAYLIST_NOW: {
-            // console.log('click', action.payload)
             return {
                 ...state,
                 playlist_now: action.payload
@@ -53,6 +56,48 @@ export default (state = initilalState, action) => {
             return {
                 ...state,
                 playlist_now: action.payload
+            };
+        }
+
+        case types.ALBUM_NOW: {
+            return {
+                ...state,
+                album_now: action.payload
+            };
+        }
+
+        case types.ALBUM_NOW_SUCCESS: {
+            return {
+                ...state,
+                album_now_success: action.payload,
+            };
+        }
+
+        case types.ARTIST_NOW: {
+            return {
+                ...state,
+                artist_now: action.payload
+            };
+        }
+
+        case types.ARTIST_NOW_SUCCESS: {
+            return {
+                ...state,
+                artist_now_success: action.payload,
+            };
+        }
+
+        case types.ARTIST_NOW_TOP_TRACK_SUCCESS: {
+            return {
+                ...state,
+                artist_now_top_50: action.payload,
+            };
+        }
+
+        case types.SONGS_ERROR: {
+            return {
+                ...state,
+                error: action.payload
             };
         }
 

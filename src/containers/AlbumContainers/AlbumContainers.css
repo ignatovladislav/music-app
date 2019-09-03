@@ -1,0 +1,41 @@
+.album_containers {
+    padding: 2% 5% 0 16%
+}
+
+.album_containers > .catalog_header_album > .info_album {
+    margin-bottom: 5%;
+    display: flex;
+}
+
+.album_containers > .catalog_header_album > .info_album > .info_album_title  {
+    font-size: 35px;
+    margin-left: 3%;
+}
+
+.album_containers > .catalog_header_album > .info_album > .info_album_title > p  {
+    font-size: 18px;
+}
+
+.album_containers > .catalog_header_items {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 2%;
+}
+
+
+.album_containers > .item_album {
+    width: 100%;
+    border: 1px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1%;
+    font-size: 20px;
+    margin-bottom: 2%;
+    cursor: pointer;
+}
+
+.album_containers > .item_album:hover {
+    background-color: rgb(128, 111, 111);
+}
