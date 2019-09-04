@@ -1,0 +1,70 @@
+.explore_container {
+    width: 80%;
+    margin-left: 18%;
+}
+
+
+
+.explore_container > h2 {
+    font-size: 45px;
+}
+
+.explore_container_block > .explore_container_content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.explore_container_block > .headline_explore {
+    margin-top: 5%;
+}
+
+.explore_container_block > h3 {
+    font-size: 24px;
+}
+
+.explore_container_block > .explore_container_content > .explore_item {
+    cursor: pointer;
+    text-align: center;
+    width: 20%;
+    background-color: green;
+    padding: 5% 0;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.red_ocean {
+    background: linear-gradient(to right top, #1d4350 0%, #a43931 100%);
+}
+
+.shahabi {
+    background: linear-gradient(to right top, #a80077 0%, #66ff00 100%);
+}
+
+.alihossein {
+    background: linear-gradient(to right top, #f7ff00 0%, #db36a4 100%);
+}
+
+.blue {
+    background: linear-gradient(to right top, rgb(3, 97, 121) 0%, rgb(0, 150, 187) 100%); 
+}
+
+.ukraine_gr {
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+}
+
+.usa_gr {
+    background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+}
+
+.uk_gr {
+    background-image: linear-gradient(to right top, #370525, #670333, #980637, #c6222e, #eb4912);
+}
+
+.worldwide_gr {
+    background-image: linear-gradient(to right top, #05371f, #09612d, #278e33, #51bc2e, #85eb12);
+}
+
+
+.loader {
+    margin-top:  10%;
+}

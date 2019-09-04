@@ -17,7 +17,7 @@ export class ArtistContainers extends Component {
 
     render() {
         const { auth, artist_now, artist_now_top_50 } = this.props;
-
+        
         if (!auth.uid) return <Redirect to='/' />
         return (
             <div className='artist_containers'>
@@ -62,7 +62,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
     return {
         artistInfo: url => dispatch(artistInfo(url)),
-        // artistTrackList
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ArtistContainers)

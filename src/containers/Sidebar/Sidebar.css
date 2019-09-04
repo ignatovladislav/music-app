@@ -35,3 +35,21 @@
 .active_link {
     border-left: 5px solid #0269A4;
 } 
+
+.user {
+    /* text-align: center; */
+    /* width: 50%; */
+    /* padding-left: auto; */
+    font-size: 20px;
+    font-weight: 500;
+}
+/* 
+.user_music > .user_link:hover {
+    background-color: rgb(224, 224, 224);   
+    color: #0269A4;
+}  */
+
+.sidebar_link:hover {
+    background-color: rgb(224, 224, 224);   
+    color: #0269A4;
+}

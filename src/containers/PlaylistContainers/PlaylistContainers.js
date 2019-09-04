@@ -10,6 +10,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 import { Loading } from '../../components/Loading/Loading';
 import { InfoPlaylist } from '../../components/deezerMusic/Playlist/InfoPlaylist';
+import { AddAlbum } from '../../components/AddAlbum/AddAlbum';
 
 export class PlaylistContainers extends Component {
     state = { playlist_info: null }
@@ -21,7 +22,6 @@ export class PlaylistContainers extends Component {
     componentDidUpdate(prevProps, prevState) {
         if (this.props.songs !== undefined && prevProps !== this.props) {
             this.filter(this.props.songs)
-            console.log('asd')
         }
     }
 
@@ -41,7 +41,8 @@ export class PlaylistContainers extends Component {
     render() {
         const { playlist_now, auth } = this.props;
         const { playlist_info } = this.state;
-
+        console.log(this.props)
+        console.log(this.state)
         if (!auth.uid) return <Redirect to='/' />
         return (
             <div className='playlist_containers'>
@@ -50,6 +51,9 @@ export class PlaylistContainers extends Component {
                         playlist_info ? <InfoPlaylist info={playlist_info} length={playlist_now.length}/> : <Loading />
                     }
                 </div>
+                {
+                    playlist_info ? <AddAlbum /> : <Loading />
+                }         
                 <div className='catalog_playlist'>
                 {
                   Array.isArray(playlist_now)  ? playlist_now.map((el, index) => {

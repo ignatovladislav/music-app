@@ -3,6 +3,7 @@ import {  ADD_SONGS, ADD_SONGS_GENRE_MUSIC, PLAYLIST_NOW, ALBUM_NOW, ARTIST_NOW 
 import * as actions from '../actions/musicActions'
 
 import axios from "axios"
+import { addClass } from '../addClass';
 
 const url = 'https://cors-anywhere.herokuapp.com/https://api.deezer.com'
 const urlPlaylist = 'https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist';
@@ -32,6 +33,7 @@ export function* musicSagaGenre() {
             url: `${url}/genre`
         });
         const songs = response.data;
+        addClass(songs)
         yield put(actions.addToSongsGenreSuccess(songs.data));
 	} catch (error) {
 		yield put(actions.songsError(error));

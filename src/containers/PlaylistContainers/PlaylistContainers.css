@@ -50,3 +50,22 @@
 .playlist_containers > .catalog_playlist > .item_playlist:hover{
     background-color: rgb(128, 111, 111);
 }
+
+.add_all {
+    border: 1px solid #fff;
+    border-radius: 20px;
+    width: 15%;
+    text-align: center;
+    margin-bottom: 5%;
+    padding: 1%;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.add_all_icon {
+    margin-right: 5%;
+}
+
+.add_all:hover {
+    background-color: rgb(128, 111, 111);
+}

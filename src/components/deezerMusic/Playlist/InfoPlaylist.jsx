@@ -11,7 +11,6 @@ export const InfoPlaylist = props => {
                 {props.info.title}
                 <p>{props.length} tracks</p>
             </div>
-            
         </div>
     )
 }
