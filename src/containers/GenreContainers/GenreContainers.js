@@ -9,13 +9,3 @@ export default  class GenreContainers extends Component {
         )
     }
 }
-
-// const mapStateToProps = (state) => ({
-    
-// })
-
-// const mapDispatchToProps = {
-    
-// }
-
-// connect(mapStateToProps, mapDispatchToProps)(GenreContainers)

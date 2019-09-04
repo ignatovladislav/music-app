@@ -9,7 +9,6 @@ import { connect } from "react-redux"
 const Album = props => {
     const { songs } = props;
     const handleClick = (e) => {
-        console.log(e.target.id)
         props.history.push(`user/album/${e.target.id}`)
     }
     return (

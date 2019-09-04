@@ -1,18 +1,15 @@
 .conteiner_top_music {
     width: 80%;
     margin-left: 18%;
-    /* padding-left: 2%; */
 }
 
 .main_container_chart {
     width: 100%;
     z-index: 1;
-    /* padding-bottom: 7%; */
+    margin-top: 6%;
+    padding-top: 1%;
 }
-/* .main_container_chart h1{
-    /* text-align: center; */
-    /* margin-top: 5%;
-}   */
+
 .container_chart {
     display: flex;
     flex-wrap: wrap;

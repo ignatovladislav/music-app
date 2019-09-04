@@ -14,11 +14,12 @@ import Player from './containers/Player/Player'
 import PlaylistContainers from './containers/PlaylistContainers/PlaylistContainers';
 import AlbumContainers from './containers/AlbumContainers/AlbumContainers';
 import ArtistContainers from './containers/ArtistContainers/ArtistContainers';
-import GenreContainers from './containers/GenreContainers/GenreContainers';
+import MoodContainer from './containers/MoodContainer/MoodContainer';
 
 
 export class App extends Component {
   render() {
+    // console.log(this.props)
     return (
       <BrowserRouter>
         <div className="App">
@@ -27,18 +28,18 @@ export class App extends Component {
             <Route exact path="/" component={ Main } />
             <Route path="/login" component={ Login } />
             <Route path="/register" component={ Singup } />
-            <Route path='/user'>
-              <main id='main_context_user'>
-                <Route exact component={ Sidebar } />
-                {/* <Route exact component={ Player } /> */}
-                <Route exact path='/user' component={ HomePageUser } />
-                <Route path='/user/expore' component={ Explore } />
-                <Route path='/user/playlist/:id' component={ PlaylistContainers } />
-                <Route path='/user/album/:id' component={ AlbumContainers } />
-                <Route path='/user/artist/:id' component={ ArtistContainers } />
-                <Route path='/user/genre/:id' component={ GenreContainers } />
-              </main>
-            </Route>
+            <BrowserRouter>
+              <Sidebar {...this.props}/>
+            <Switch>
+                  {/* <Route exact component={ Player } /> */}
+                  <Route exact path='/user' component={ HomePageUser } />
+                  <Route path='/user/expore' component={ Explore } />
+                  <Route path='/expore/:id' component={ MoodContainer } />
+                  <Route path='/user/playlist/:id' component={ PlaylistContainers } />
+                  <Route path='/user/album/:id' component={ AlbumContainers } />
+                  <Route path='/user/artist/:id' component={ ArtistContainers } />
+            </Switch>
+            </BrowserRouter>
           </Switch>
         </div>
       </BrowserRouter>
