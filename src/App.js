@@ -15,7 +15,7 @@ import PlaylistContainers from './containers/PlaylistContainers/PlaylistContaine
 import AlbumContainers from './containers/AlbumContainers/AlbumContainers';
 import ArtistContainers from './containers/ArtistContainers/ArtistContainers';
 import CountryChartContainer from './containers/CountryChartContainer/CountryChartContainer';
-// import MoodContainerItem from './containers/CountryChart/MoodContainerItem';
+import SearchResult from './containers/SearchResult/SearchResult';
 
 export class App extends Component {
   render() {
@@ -39,6 +39,12 @@ export class App extends Component {
               <Sidebar {...this.props}/>
               <Route exact path='/expore' component={ Explore } />
               <Route path='/expore/:id' component={ CountryChartContainer } />
+              {/* <Route path='/expore/:id/:rt' component={ MoodContainerItem } /> */}
+            </Route>
+            <Route path="/search" >
+              <Sidebar {...this.props}/>
+              <Route exact path='/search/:id' component={ SearchResult } />
+              {/* <Route path='/expore/:id' component={ CountryChartContainer } /> */}
               {/* <Route path='/expore/:id/:rt' component={ MoodContainerItem } /> */}
             </Route>
           </Switch>

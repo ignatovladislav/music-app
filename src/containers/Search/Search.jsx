@@ -1,34 +1,48 @@
 import React, { Component } from 'react'
 import './Search.css'
+import { Link, withRouter } from 'react-router-dom'
 
-
-export default class Search extends Component {
+export class SearchCon extends Component {
     state = {
         value: '',
+        disabled: true
     }
-
-    handleOnSubmit = (event) => {
-        event.preventDefault();
-        if (event.target.elements.text.value) {
-            this.setState({
-                value: event.target.elements.text.value
-            })
+    componentDidUpdate(prevProps, PrevState) {
+        if(PrevState !== this.state) {
+            console.log(this.state)
         }
     }
 
-    onHandleChange = (event) => {
-        event.preventDefault();
-        console.log()
-        this.setState( { t: event.target.value })
+    handleOnSubmit = e => {
+        e.preventDefault();
+        if (this.state.value) {
+            this.props.history.push(`/search/${this.state.value}`)
+        }
+        // thi
     }
+
+    handdleChange = e => {
+        // console.log()
+        this.setState({
+            value: e.target.value,
+            disabled: false,
+        })
+    }
+
     render() {
+        console.log(this.props)
+        // console.log(this.state)
         return (
                 <div className='search_container'>
                     <form onSubmit={this.handleOnSubmit}>
-                        <input autoComplete="off" type='text' name='text' placeholder='Track, album' onChange={this.onHandleChange.bind(this)}/>
-                        <button>Search</button>
+                        <input autoComplete="off" id='search' name='text' placeholder='Track, album' onChange={this.handdleChange}/>
+                        <button disabled={this.state.disabled}>Search</button>
                     </form>
                 </div>
         )
     }
 }
+
+const Search = withRouter(SearchCon);
+
+export default Search;
