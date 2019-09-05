@@ -1,0 +1,55 @@
+.county_chart_container {
+    width: 80%;
+    margin-left: 18%;
+    margin-top: 6%;
+    padding-top: 1%;
+}
+
+.county_chart_container > .info_playlist {
+    display: flex; 
+}
+
+.county_chart_container > .info_playlist > .info_playlist_title{
+    font-size: 35px;
+    margin-left: 3%;
+}
+
+.county_chart_container > .info_playlist > .info_playlist_title > p{
+    font-size: 25px;
+    margin-left: 3%;
+}
+
+.add_all {
+    margin: 5% 0;
+}
+
+.county_chart_container > .items_playlist {
+    width: 100%;
+}
+
+.county_chart_container > .items_playlist > .item_playlist_country {
+    width: 100%;
+    border: 1px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1%;
+    font-size: 20px;
+    margin-bottom: 2%;
+    cursor: pointer;
+}
+
+.county_chart_container > .items_playlist > .item_playlist_country > .index_item_playlist_country {
+    width: 25%;
+}
+
+.county_chart_container > .items_playlist > .item_playlist_country:hover {
+    background-color: rgb(128, 111, 111);
+}
+
+.loader {
+    position: absolute;
+    z-index: 9999;
+    top: 25%;
+    left: 50%;
+}

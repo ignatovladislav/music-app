@@ -9,6 +9,7 @@ import { InfoArtist } from '../../components/deezerMusic/Artist/InfoArtist';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { AddAlbum } from '../../components/AddAlbum/AddAlbum'
 
 export class ArtistContainers extends Component {
     componentDidMount() {
@@ -26,6 +27,9 @@ export class ArtistContainers extends Component {
                         artist_now ? <InfoArtist name={artist_now.name} img={artist_now.picture_medium} /> : <Loading />
                     }
                 </div>   
+                {
+                    artist_now ? <AddAlbum/> : <Loading />
+                }     
                 {
                     artist_now_top_50 ? artist_now_top_50.data.map((el, index) => {
                         return (

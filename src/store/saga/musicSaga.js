@@ -1,5 +1,5 @@
-import { takeEvery, call, put } from 'redux-saga/effects'
-import {  ADD_SONGS, ADD_SONGS_GENRE_MUSIC, PLAYLIST_NOW, ALBUM_NOW, ARTIST_NOW } from "../actionTypes"
+import { takeEvery, call, put, all } from 'redux-saga/effects'
+import {  ADD_SONGS, ADD_SONGS_GENRE_MUSIC, PLAYLIST_NOW, ALBUM_NOW, ARTIST_NOW, COUNTRY_LIST } from "../actionTypes"
 import * as actions from '../actions/musicActions'
 
 import axios from "axios"
@@ -92,10 +92,27 @@ export function* aristNowSaga(data) {
 	}
 }
 
+export function*  countryPlaylist(data) {
+    console.log(data)
+    const country = data.payload;
+	try {
+		const response = yield call(axios, {
+            method: "get",
+            url: `${urlPlaylist}/${country}`
+        });
+        // console.log(response)
+        const playlist_track = response.data;
+        yield put(actions.countryChartListlSuccess(playlist_track));
+	} catch (error) {
+		yield put(actions.songsError(error));
+	}
+}
+
 export function* watcherMusicSaga() {
     yield takeEvery(ADD_SONGS, musicSaga);
     yield takeEvery(ADD_SONGS_GENRE_MUSIC, musicSagaGenre);
     yield takeEvery(PLAYLIST_NOW, playlistNowSaga);
     yield takeEvery(ALBUM_NOW, albumNowSaga);
     yield takeEvery(ARTIST_NOW, aristNowSaga);
+    yield takeEvery(COUNTRY_LIST, countryPlaylist);
 }

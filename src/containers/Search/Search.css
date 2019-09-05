@@ -1,0 +1,26 @@
+.search_container {
+    background-color: black;
+    width: 25%; 
+}
+
+.search_container > form > input {
+    width: 80%;
+    padding: 7px;
+    margin-right: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+    background-color: black;
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.search_container > form > button {
+    padding: 7px;
+    font-size: 15px;
+    border: 1px solid #fff;
+    cursor: pointer;
+    outline: none;
+    background-color: #000;
+    color: #fff;
+}

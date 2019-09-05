@@ -1,5 +1,6 @@
 .artist_containers {
     padding: 2% 5% 0 16%;
+    margin-top: 6%;
 }
 
 .artist_containers > .catalog_header_artist > .info_artist {

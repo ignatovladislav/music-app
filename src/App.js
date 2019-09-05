@@ -14,8 +14,8 @@ import Player from './containers/Player/Player'
 import PlaylistContainers from './containers/PlaylistContainers/PlaylistContainers';
 import AlbumContainers from './containers/AlbumContainers/AlbumContainers';
 import ArtistContainers from './containers/ArtistContainers/ArtistContainers';
-import MoodContainer from './containers/MoodContainer/MoodContainer';
-
+import CountryChartContainer from './containers/CountryChartContainer/CountryChartContainer';
+// import MoodContainerItem from './containers/CountryChart/MoodContainerItem';
 
 export class App extends Component {
   render() {
@@ -28,18 +28,19 @@ export class App extends Component {
             <Route exact path="/" component={ Main } />
             <Route path="/login" component={ Login } />
             <Route path="/register" component={ Singup } />
-            <BrowserRouter>
+            <Route path="/user" >
               <Sidebar {...this.props}/>
-            <Switch>
-                  {/* <Route exact component={ Player } /> */}
-                  <Route exact path='/user' component={ HomePageUser } />
-                  <Route path='/user/expore' component={ Explore } />
-                  <Route path='/expore/:id' component={ MoodContainer } />
-                  <Route path='/user/playlist/:id' component={ PlaylistContainers } />
-                  <Route path='/user/album/:id' component={ AlbumContainers } />
-                  <Route path='/user/artist/:id' component={ ArtistContainers } />
-            </Switch>
-            </BrowserRouter>
+                <Route exact path='/user' component={ HomePageUser } />
+                <Route path='/user/playlist/:id' component={ PlaylistContainers } />
+                <Route path='/user/album/:id' component={ AlbumContainers } />
+                <Route path='/user/artist/:id' component={ ArtistContainers } />
+            </Route>
+            <Route path="/expore" >
+              <Sidebar {...this.props}/>
+              <Route exact path='/expore' component={ Explore } />
+              <Route path='/expore/:id' component={ CountryChartContainer } />
+              {/* <Route path='/expore/:id/:rt' component={ MoodContainerItem } /> */}
+            </Route>
           </Switch>
         </div>
       </BrowserRouter>

@@ -9,6 +9,7 @@ import { InfoAlbum } from '../../components/deezerMusic/Album/InfoAlbum';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { AddAlbum } from '../../components/AddAlbum/AddAlbum'
 
 export class AlbumContainers extends Component {
     componentDidMount() {
@@ -32,7 +33,10 @@ export class AlbumContainers extends Component {
                                 img={album_now_success.cover_medium}
                             /> : <Loading />
                     }
-                </div>               
+                </div>     
+                {
+                    album_now_success ? <AddAlbum /> : <Loading />
+                }           
                 { 
                     album_now_success ? album_now_success.tracks.data.map((el, index) => {
                         return (

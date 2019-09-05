@@ -60,3 +60,13 @@ export const artistTopTrackSuccess = payload => ({
   type: types.ARTIST_NOW_TOP_TRACK_SUCCESS,
   payload 
 });
+
+export const countryChartList = payload => ({
+  type: types.COUNTRY_LIST,
+  payload 
+});
+
+export const countryChartListlSuccess = payload => ({
+  type: types.COUNTRY_LIST_SUCCESS,
+  payload 
+});

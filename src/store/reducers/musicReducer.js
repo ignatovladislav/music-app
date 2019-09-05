@@ -11,6 +11,8 @@ const initilalState = {
   artist_now: null,
   artist_now_success: null,
   artist_now_top_50: null,
+  country_list: null,
+  country_list_success: null,
 };
 
 
@@ -91,6 +93,20 @@ export default (state = initilalState, action) => {
             return {
                 ...state,
                 artist_now_top_50: action.payload,
+            };
+        }
+
+        case types.COUNTRY_LIST: {
+            return {
+                ...state,
+                country_list: action.payload,
+            };
+        }
+
+        case types.COUNTRY_LIST_SUCCESS: {
+            return {
+                ...state,
+                country_list_success: action.payload,
             };
         }
 
