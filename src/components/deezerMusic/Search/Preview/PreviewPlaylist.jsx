@@ -1,17 +1,13 @@
 import React, { Component } from 'react'
-import { withRouter, Redirect } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 export class Container extends Component {
-    state = { redirect: false, name: null }
 
     handleClick = (e) => {
-        this.setState({ redirect: true, name: e.target.id })
+        this.props.history.push(`/playlist/${e.target.id}`)
     }
     render() {
         const { preview_playlist } = this.props;
-        const { redirect, name } = this.state;
-        
-        if ( redirect && name) return <Redirect to={`/playlist/${name}`} /> 
         return (
             <div className='search_container_item'>
                 <h3>Playlist ></h3>

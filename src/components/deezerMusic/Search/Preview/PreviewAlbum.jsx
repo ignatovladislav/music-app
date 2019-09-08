@@ -1,18 +1,13 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
-export default class PreviewAlbum extends Component {
-    state = { redirect: false, name: null }
-
+export class Container extends Component {
     handleClick = (e) => {
-        this.setState({ redirect: true, name: e.target.id })
+        this.props.history.push(`/album/${e.target.id}`)
     }
     render() {
         const { preview_album } = this.props;
-        const { redirect, name } = this.state;
-        console.log(name)
 
-        if ( redirect && name) return <Redirect to={`/user/album/${+name}`} />
         return (
             <div className='search_container_item'>
                  <h3>Album ></h3>
@@ -39,6 +34,6 @@ export default class PreviewAlbum extends Component {
     
 }
 
-// const PreviewAlbum = withRouter(Preview);
+const PreviewAlbum = withRouter(Container);
 
-// export default PreviewAlbum;
+export default PreviewAlbum;

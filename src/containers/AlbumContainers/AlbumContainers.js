@@ -17,7 +17,7 @@ export class AlbumContainers extends Component {
     
     render() {
         const { album_now_success } = this.props;
-
+        console.log(this.props)
         return (
             <div className='album_containers'>
                 <div className='catalog_header_album'>

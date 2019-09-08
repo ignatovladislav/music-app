@@ -11,7 +11,6 @@ const Album = props => {
     const handleClick = (e) => {
         props.history.push(`album/${e.target.id}`)
     }
-    console.log(songs.albums)
     return (
         <div className='albums_top'>
             <h2>Popular albums</h2>

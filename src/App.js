@@ -16,11 +16,9 @@ import CountryChartContainer from './containers/CountryChartContainer/CountryCha
 import SearchResult from './containers/SearchResult/SearchResult';
 
 import PrivateRoute from './router/privateRouter'
+import { DetailItems } from './components/deezerMusic/Search/DetailItems'
 
 export class App extends Component {
-  componentDidMount() {
-    console.log(this.props.auth.uid)
-  }
   render() {
     const { auth } = this.props;
     return (
@@ -31,6 +29,7 @@ export class App extends Component {
             <Route path="/login" component={ Login } />
             <PrivateRoute path='/user' auth={auth.uid} component={ HomePageUser } />
             <PrivateRoute path='/search/:id' auth={auth.uid} component={ SearchResult } /> 
+            <PrivateRoute path='/search/:id/:data' auth={auth.uid} component={ DetailItems } />
             <PrivateRoute path='/playlist/:id' auth={auth.uid} component={ PlaylistContainers } />
             <PrivateRoute path='/album/:id' auth={auth.uid} component={ AlbumContainers } />
             <PrivateRoute path='/artist/:id' auth={auth.uid} component={ ArtistContainers } />

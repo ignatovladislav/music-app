@@ -1,20 +1,17 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
-export default class PreviewArtist extends Component {
-    state = { redirect: false, name: null }
-
+export class Container extends Component {
     handleClick = (e) => {
-        this.setState({ redirect: true, name: e.target.id })
+        this.props.history.push(`/artist/${e.target.id}`)
+
     }
+
     render() {
         const { preview_artist } = this.props;
-        const { redirect, name } = this.state;
-        
-        if ( redirect && name) return <Redirect to={`/user/artist/${name}`} />
         return (
             <div className='search_container_item'>
-                <h3>Playlist ></h3>
+                <h3>Artist ></h3>
                 <div className='search_container_item_artist'>
                 {
                     preview_artist ? preview_artist.slice(0, 5).map(el => {
@@ -24,7 +21,7 @@ export default class PreviewArtist extends Component {
                                     <img src={el.picture_medium} alt='exec' id={el.id}/>
                                 </div>
                                 <div className='search_container_index_item' id={el.id}>
-                                    <h4 id={el.id}>{el.title}</h4>
+                                    <h4 id={el.id}>{el.name}</h4>
                                 </div>
                             </div>
                         )
@@ -36,3 +33,7 @@ export default class PreviewArtist extends Component {
     }
     
 }
+
+const PreviewArtist = withRouter(Container)
+
+export default PreviewArtist
