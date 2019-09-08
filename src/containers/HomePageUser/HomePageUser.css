@@ -1,13 +1,7 @@
 .conteiner_top_music {
     width: 80%;
-    margin-left: 18%;
-}
-
-.main_container_chart {
-    width: 100%;
-    z-index: 1;
-    margin-top: 6%;
-    padding-top: 1%;
+    position: relative;
+    left: 18%;
 }
 
 .container_chart {

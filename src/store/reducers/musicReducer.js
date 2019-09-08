@@ -5,14 +5,21 @@ const initilalState = {
   genreMusic: [],
   loading: null,
   error: null,
+  playlist_info: null,
   playlist_now: null,
   album_now: null,
   album_now_success: null,
   artist_now: null,
-  artist_now_success: null,
-  artist_now_top_50: null,
+  artist_info_success: null,
+  artist_tracklist_success: null,
+  artist_album_success: null,
   country_list: null,
   country_list_success: null,
+  search_all: null,
+  search_track_success: null,
+  search_artist_success: null,
+  search_album_success: null,
+  search_playlist_success: null,
 };
 
 
@@ -54,6 +61,13 @@ export default (state = initilalState, action) => {
             };
         }
 
+        case types.PLAYLIST_INFO_SUCCESS: {
+            return {
+                ...state,
+                playlist_info: action.payload
+            };
+        }
+
         case types.PLAYLIST_NOW_SUCCESS: {
             return {
                 ...state,
@@ -82,17 +96,24 @@ export default (state = initilalState, action) => {
             };
         }
 
-        case types.ARTIST_NOW_SUCCESS: {
+        case types.ARTIST_INFO_SUCCESS: {
             return {
                 ...state,
-                artist_now_success: action.payload,
+                artist_info_success: action.payload,
             };
         }
 
-        case types.ARTIST_NOW_TOP_TRACK_SUCCESS: {
+        case types.ARTIST_TRACKLIST_SUCCESS: {
             return {
                 ...state,
-                artist_now_top_50: action.payload,
+                artist_tracklist_success: action.payload,
+            };
+        }
+
+        case types.ARTIST_ALBUM_SUCCESS: {
+            return {
+                ...state,
+                artist_album_success: action.payload,
             };
         }
 
@@ -110,6 +131,40 @@ export default (state = initilalState, action) => {
             };
         }
 
+        case types.SEARCH_ALL: {
+            return {
+                ...state,
+                search_all: action.payload,
+            };
+        }
+
+        case types.SEARCH_TRACK_SUCCESS: {
+            return {
+                ...state,
+                search_track_success: action.payload,
+            };
+        }
+
+        case types.SEARCH_ARTIST_SUCCESS: {
+            return {
+                ...state,
+                search_artist_success: action.payload,
+            };
+        }
+
+        case types.SEARCH_ALBUM_SUCCESS: {
+            return {
+                ...state,
+                search_album_success: action.payload,
+            };
+        }
+
+        case types.SEARCH_PLAYLIST_SUCCESS: {
+            return {
+                ...state,
+                search_playlist_success: action.payload,
+            };
+        }
         case types.SONGS_ERROR: {
             return {
                 ...state,

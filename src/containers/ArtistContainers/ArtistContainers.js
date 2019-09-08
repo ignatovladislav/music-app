@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 import { artistInfo } from '../../store/actions/musicActions'
 import './ArtistContainers.css'
 
@@ -13,25 +12,27 @@ import { AddAlbum } from '../../components/AddAlbum/AddAlbum'
 
 export class ArtistContainers extends Component {
     componentDidMount() {
-        this.props.artistInfo(this.props.history.location.pathname.split('/')[3]);
+        this.props.artistInfo(this.props.history.location.pathname.split('/')[2]);
+    }
+
+    handleClick = e => {
+        this.props.history.push(`/album/${e.target.id}`)
     }
 
     render() {
-        const { auth, artist_now, artist_now_top_50 } = this.props;
-        
-        if (!auth.uid) return <Redirect to='/' />
+        const { artist_info_success, artist_tracklist_success, artist_album_success  } = this.props;
         return (
             <div className='artist_containers'>
                 <div className='catalog_header_artist'>
                     {
-                        artist_now ? <InfoArtist name={artist_now.name} img={artist_now.picture_medium} /> : <Loading />
+                        artist_info_success ? <InfoArtist name={artist_info_success.name} img={artist_info_success.picture_medium} /> : <Loading />
                     }
                 </div>   
                 {
-                    artist_now ? <AddAlbum/> : <Loading />
+                    artist_tracklist_success ? <AddAlbum/> : <Loading />
                 }     
                 {
-                    artist_now_top_50 ? artist_now_top_50.data.map((el, index) => {
+                    artist_tracklist_success ? artist_tracklist_success.map((el, index) => {
                         return (
                             <div className="item_artist" id={el.id} key={el.id}>
                                 <div className='index_item_artist' >
@@ -50,15 +51,35 @@ export class ArtistContainers extends Component {
                             </div>
                         )
                     }) : <Loading />
-                }            
+                } 
+                <h3>Albums</h3>      
+                <div className='test'>    
+                {
+                    artist_album_success ? artist_album_success.map(el => {
+                        console.log(el)
+                        return (
+                            <div id={el.id} className='item_artist_album' key={el.id} onClick={this.handleClick}>
+                                <div id={el.id} className='index_item_artist'>
+                                    <img id={el.id} src={el.cover_medium} alt='caphca'/>
+                                </div>
+                                <div id={el.id} className='index_item_artist'>
+                                    {el.title}
+                                </div> 
+
+                            </div>
+                        ) 
+                    }) : <Loading />
+                }
+                </div>
             </div>
         )
     }
 }
 
 const mapStateToProps = state => ({
-    artist_now: state.music.artist_now_success,
-    artist_now_top_50: state.music.artist_now_top_50,
+    artist_info_success: state.music.artist_info_success,
+    artist_tracklist_success: state.music.artist_tracklist_success,
+    artist_album_success: state.music.artist_album_success,
     error: state.music.error,
     auth: state.firebase.auth,
 })

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { playlistTrackList } from '../../store/actions/musicActions'
 import * as types from "../../store/actionTypes";
-import { Redirect } from 'react-router-dom'
 import './PlaylistContainers.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -16,34 +15,11 @@ export class PlaylistContainers extends Component {
     state = { playlist_info: null }
     componentDidMount() {
         this.props.addToSongs() 
-        this.props.playlistTrackList(this.props.history.location.pathname.split('/')[3])
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-        if (this.props.songs !== undefined && prevProps !== this.props) {
-            this.filter(this.props.songs)
-        }
-    }
-
-    filter = data => {
-        const id = +this.props.history.location.pathname.split('/')[3];
-        if (data) {
-            data = data.playlists.data;
-            for (let i = 0; i < data.length; i++ ) {
-                if (data[i].id === id) {
-                    this.setState({ playlist_info: data[i] })
-                }
-            }
-        }
- 
+        this.props.playlistTrackList(this.props.history.location.pathname.split('/')[2])
     }
 
     render() {
-        const { playlist_now, auth } = this.props;
-        const { playlist_info } = this.state;
-        console.log(this.props)
-        console.log(this.state)
-        if (!auth.uid) return <Redirect to='/' />
+        const { playlist_now, playlist_info } = this.props;
         return (
             <div className='playlist_containers'>
                 <div className='catalog_header_playlist'>
@@ -87,7 +63,8 @@ const mapStateToProps = state => {
       error: state.music.error,
       auth: state.firebase.auth,
       genreMusic: state.music.genreMusic,
-      playlist_now: state.music.playlist_now
+      playlist_now: state.music.playlist_now,
+      playlist_info: state.music.playlist_info,
     }
 }
 

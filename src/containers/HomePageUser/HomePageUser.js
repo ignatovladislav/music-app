@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-// import { addToSongs } from "../../store/actionTypes";
 import './HomePageUser.css';
 
 import { ContainerToMusic } from '../../components/deezerMusic/ContainerTopMusic/ContainerToMusic';
 import { Loading } from '../../components/Loading/Loading';
-import {addToSongs} from '../../store/actions/musicActions'
+import { addToSongs } from '../../store/actions/musicActions'
 
 export class HomePageUser extends Component {
   componentDidMount() {

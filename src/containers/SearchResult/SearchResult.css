@@ -1,6 +1,46 @@
 .search_result_container {
     width: 80%;
     margin-left: 18%;
-    margin-top: 6%;
+    margin-top: 5%;
     padding-top: 1%;
+}
+
+.search_result_container > .search_container_item > .search_container_index {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #fff;
+    width: 100%;
+    margin-bottom: 2%;
+    cursor: pointer;
+    padding: 1%;
+    font-size: 20px;
+}
+
+.search_result_container > .search_container_item > .search_container_index > .search_container_index_item {
+   width: 25%;
+}
+
+.search_result_container > .search_container_item > .search_container_index:hover {
+    background-color: rgb(128, 111, 111);
+}
+
+.search_container_item_artist {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 2%;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.search_container_item_artist > .search_container_index {
+    width: 20%;
+    padding-top: 1%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.search_container_item_artist > .search_container_index:hover {
+    background-color: rgb(128, 111, 111);
 }

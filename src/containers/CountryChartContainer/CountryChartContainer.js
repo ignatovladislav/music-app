@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { countryChartList } from '../../store/actions/musicActions'
+import { withRouter } from 'react-router-dom'
 
 import './CountryChartContainer.css'
 import { Loading } from '../../components/Loading/Loading';
@@ -9,21 +10,12 @@ import { AddAlbum } from '../../components/AddAlbum/AddAlbum';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
-export class CountryChartContainer extends Component {
-    state = { hidden: true }
+export class Container extends Component {
     componentDidMount() {
         this.props.countryChartList(this.props.history.location.pathname.split('/')[2])
-        setTimeout(() => {
-            this.setState({hidden: false});
-        }, 1000);
     }
-
-
-
     render() {
         const { country_list_success } = this.props;
-        console.log(country_list_success)
-        if(this.state.hidden) return <Loading />
         return (
             <div className='county_chart_container'>
                 {
@@ -72,6 +64,7 @@ export class CountryChartContainer extends Component {
     }
 }
 
+const CountryChartContainer = withRouter(Container)
 
 const mapStateToProps = state => {
     return {

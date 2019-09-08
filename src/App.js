@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Route, Switch } from "react-router-dom"
+import { Route, Switch } from "react-router-dom"
 import { connect } from 'react-redux'
 
 import './App.css'
@@ -7,49 +7,37 @@ import Header from './containers/Header/Header'
 import { Main } from './containers/Main/Main'
 import Login from './containers/Login/Login'
 import Singup from './containers/SignUp/SignUp'
-import Sidebar from './containers/Sidebar/Sidebar'
 import HomePageUser from './containers/HomePageUser/HomePageUser'
 import Explore from './containers/Explore/Explore'
-import Player from './containers/Player/Player'
 import PlaylistContainers from './containers/PlaylistContainers/PlaylistContainers';
 import AlbumContainers from './containers/AlbumContainers/AlbumContainers';
 import ArtistContainers from './containers/ArtistContainers/ArtistContainers';
 import CountryChartContainer from './containers/CountryChartContainer/CountryChartContainer';
 import SearchResult from './containers/SearchResult/SearchResult';
 
+import PrivateRoute from './router/privateRouter'
+
 export class App extends Component {
+  componentDidMount() {
+    console.log(this.props.auth.uid)
+  }
   render() {
-    // console.log(this.props)
+    const { auth } = this.props;
     return (
-      <BrowserRouter>
         <div className="App">
           <Header />
           <Switch>
-            <Route exact path="/" component={ Main } />
+            <Route exact path="/" component={ Main } /> 
             <Route path="/login" component={ Login } />
-            <Route path="/register" component={ Singup } />
-            <Route path="/user" >
-              <Sidebar {...this.props}/>
-                <Route exact path='/user' component={ HomePageUser } />
-                <Route path='/user/playlist/:id' component={ PlaylistContainers } />
-                <Route path='/user/album/:id' component={ AlbumContainers } />
-                <Route path='/user/artist/:id' component={ ArtistContainers } />
-            </Route>
-            <Route path="/expore" >
-              <Sidebar {...this.props}/>
-              <Route exact path='/expore' component={ Explore } />
-              <Route path='/expore/:id' component={ CountryChartContainer } />
-              {/* <Route path='/expore/:id/:rt' component={ MoodContainerItem } /> */}
-            </Route>
-            <Route path="/search" >
-              <Sidebar {...this.props}/>
-              <Route exact path='/search/:id' component={ SearchResult } />
-              {/* <Route path='/expore/:id' component={ CountryChartContainer } /> */}
-              {/* <Route path='/expore/:id/:rt' component={ MoodContainerItem } /> */}
-            </Route>
+            <PrivateRoute path='/user' auth={auth.uid} component={ HomePageUser } />
+            <PrivateRoute path='/search/:id' auth={auth.uid} component={ SearchResult } /> 
+            <PrivateRoute path='/playlist/:id' auth={auth.uid} component={ PlaylistContainers } />
+            <PrivateRoute path='/album/:id' auth={auth.uid} component={ AlbumContainers } />
+            <PrivateRoute path='/artist/:id' auth={auth.uid} component={ ArtistContainers } />
+            <PrivateRoute path='/expore' auth={auth.uid} component={ Explore } />
+            <PrivateRoute path='/:rest/:id' auth={auth.uid} component={ CountryChartContainer } />
           </Switch>
         </div>
-      </BrowserRouter>
     ) 
   }
 }

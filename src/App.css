@@ -1,0 +1,11 @@
+#container {
+    padding: 2%;
+}
+
+.main_container_chart {
+    width: 100%;
+    margin-top: 7%;
+    z-index: 1;
+    
+    /* padding-top: 1%; */
+} 

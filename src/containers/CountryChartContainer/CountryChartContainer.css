@@ -1,7 +1,7 @@
 .county_chart_container {
     width: 80%;
     margin-left: 18%;
-    margin-top: 6%;
+    margin-top: 5%;
     padding-top: 1%;
 }
 
@@ -45,11 +45,4 @@
 
 .county_chart_container > .items_playlist > .item_playlist_country:hover {
     background-color: rgb(128, 111, 111);
-}
-
-.loader {
-    position: absolute;
-    z-index: 9999;
-    top: 25%;
-    left: 50%;
 }

@@ -2,8 +2,9 @@
     width: 15%;
     height: 100%;
     position: fixed;
-    z-index: 2;
+    z-index: 9999;
     padding: 2% 0;
+    top: 14%;
     border-right: 2px solid #fff; 
 }
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import { Redirect } from 'react-router-dom'
 import './Login.css'
 
 import { Socialnetwork } from '../../components/Socialnetwork/Socialnetwork'
@@ -15,7 +14,7 @@ class Login extends Component {
 
     componentDidUpdate = (prevProps, prevState) => {
         if (prevProps !== this.props && !this.props.authError && this.props.auth.uid !== undefined) {
-            this.props.history.push(`/user`)
+            this.props.history.push('/user')
         }
     }
 
@@ -45,7 +44,7 @@ class Login extends Component {
             <form className='form_container' onSubmit={this.handleSubmit}>
                 <input autoComplete="off" name='email' type="email" placeholder='E-mail address' onChange={this.handleChange} />
                 <input name='password' type="password" placeholder='Password' onChange={this.handleChange} />
-                <button disabled={disabledBtn}>Log In</button>     
+                <button disabled={disabledBtn}>Log In</button>    
                 {
                     authError ? <Error text={authError} /> : null
                 }

@@ -8,7 +8,7 @@ import { Loading } from '../../Loading/Loading'
 export const Artist = props => {
     const { songs, history } = props
     const handleClick = e => {
-        history.push(`/user/artist/${e.target.id}`)
+        history.push(`/artist/${e.target.id}`)
     }
     return (
         <div className='artists_top'>

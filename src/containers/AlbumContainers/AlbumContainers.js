@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 import { albumTrackList } from '../../store/actions/musicActions'
 import './AlbumContainers.css'
 
@@ -13,13 +12,12 @@ import { AddAlbum } from '../../components/AddAlbum/AddAlbum'
 
 export class AlbumContainers extends Component {
     componentDidMount() {
-        this.props.albumTrackList(this.props.history.location.pathname.split('/')[3]);
+        this.props.albumTrackList(this.props.history.location.pathname.split('/')[2]);
     }
     
     render() {
-        const { album_now_success, auth } = this.props;
+        const { album_now_success } = this.props;
 
-        if (!auth.uid) return <Redirect to='/' />
         return (
             <div className='album_containers'>
                 <div className='catalog_header_album'>

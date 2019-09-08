@@ -1,18 +1,20 @@
 .singup_socnetw {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 15%;
+    /* justify-content: center; */
+    padding: 1%;
+    
+    /* width: 15%; */
     border: 1px solid transparent;
     cursor: pointer;
 }
 
 .singup_socnetw > .icon_google {
-    width: 10%;
+    width: 50%;
 }
 
 .singup_socnetw > h3 {
-    font-size: 25px;
+    font-size: 30px;
     margin: 0 0 0 10px;
 }
 

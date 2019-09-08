@@ -30,6 +30,11 @@ export const playlistTrackList = payload => ({
   payload 
 });
 
+export const playlistInfoSuccess = payload => ({
+  type: types.PLAYLIST_INFO_SUCCESS,
+  payload 
+});
+
 export const playlistTrackListSuccess = payload => ({
   type: types.PLAYLIST_NOW_SUCCESS,
   payload 
@@ -52,12 +57,17 @@ export const artistInfo = payload => ({
 });
 
 export const artistInfoSuccess = payload => ({
-  type: types.ARTIST_NOW_SUCCESS,
+  type: types.ARTIST_INFO_SUCCESS,
   payload 
 });
 
-export const artistTopTrackSuccess = payload => ({
-  type: types.ARTIST_NOW_TOP_TRACK_SUCCESS,
+export const artistTracklistSuccess = payload => ({
+  type: types.ARTIST_TRACKLIST_SUCCESS,
+  payload 
+});
+
+export const artistAlbumSuccess = payload => ({
+  type: types.ARTIST_ALBUM_SUCCESS,
   payload 
 });
 
@@ -68,5 +78,30 @@ export const countryChartList = payload => ({
 
 export const countryChartListlSuccess = payload => ({
   type: types.COUNTRY_LIST_SUCCESS,
+  payload 
+});
+
+export const searchAllAction = payload => ({
+  type: types.SEARCH_ALL,
+  payload 
+});
+
+export const searchTrackSuccess = payload => ({
+  type: types.SEARCH_TRACK_SUCCESS,
+  payload 
+});
+
+export const searchArtistSuccess = payload => ({
+  type: types.SEARCH_ARTIST_SUCCESS,
+  payload 
+});
+
+export const searchAlbumSuccess = payload => ({
+  type: types.SEARCH_ALBUM_SUCCESS,
+  payload 
+});
+
+export const searchPlaylistSuccess = payload => ({
+  type: types.SEARCH_PLAYLIST_SUCCESS,
   payload 
 });

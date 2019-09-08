@@ -13,7 +13,6 @@ class Header extends Component {
     const { auth } = this.props;
     const search = auth.uid ? <Search /> : null;
     const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
-  
     return (
         <header>
           <Headline />

@@ -1,28 +1,21 @@
 import React, { Component } from 'react'
 import './Search.css'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 export class SearchCon extends Component {
     state = {
         value: '',
-        disabled: true
-    }
-    componentDidUpdate(prevProps, PrevState) {
-        if(PrevState !== this.state) {
-            console.log(this.state)
-        }
+        disabled: true,
+        redirect: false,
     }
 
     handleOnSubmit = e => {
         e.preventDefault();
-        if (this.state.value) {
-            this.props.history.push(`/search/${this.state.value}`)
-        }
-        // thi
+        this.props.history.push(`/search/${this.state.value}`)
+
     }
 
     handdleChange = e => {
-        // console.log()
         this.setState({
             value: e.target.value,
             disabled: false,
@@ -30,8 +23,6 @@ export class SearchCon extends Component {
     }
 
     render() {
-        console.log(this.props)
-        // console.log(this.state)
         return (
                 <div className='search_container'>
                     <form onSubmit={this.handleOnSubmit}>

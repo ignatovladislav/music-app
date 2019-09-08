@@ -10,18 +10,18 @@ const SignedInLinks = props => {
 
   return (
     <div className='logout_and_profile_container'>
-      {
-        !auth.photoURL ?  <Link to='/' onClick={props.signOut} className='logout_container logout' >Log Out</Link> :
-        <Link to='/' onClick={props.signOut} className='logout_container logout' style={{height : '60px', paddingTop : '7%'}}>Log Out</Link>
-      }
-      
-      {
-        !auth.photoURL ? <Link to={`/user`} className='profile_container logout' style={{textAlign: 'center'}}>{profile.initials}</Link> :
-        <Link to={`/user`} className='profile_container logout' style={{height : '60px'}}>
-          <img src={auth.photoURL} alt='avatar' className='avatar_user'/>
-        </Link>
-      }
-    </div>
+    {
+      !auth.photoURL ?  <Link to='/' onClick={props.signOut} className='logout_container logout' >Log Out</Link> :
+      <Link to='/' onClick={props.signOut} className='logout_container logout' style={{height : '60px', paddingTop : '7%'}}>Log Out</Link>
+    }
+    
+    {
+      !auth.photoURL ? <Link to={`/user`} className='profile_container logout' style={{textAlign: 'center'}}>{profile.initials}</Link> :
+      <Link to={`/user`} className='profile_container logout' style={{height : '60px'}}>
+        <img src={auth.photoURL} alt='avatar' className='avatar_user'/>
+      </Link>
+    }
+  </div>
   )
 }
 

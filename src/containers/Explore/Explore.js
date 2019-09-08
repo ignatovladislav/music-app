@@ -1,15 +1,10 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
-import { connect } from "react-redux";
 import './Explore.css'
 
 import { CountryChart } from '../../components/deezerMusic/ExporeItem/CountryChart';
 
-export class Explore extends Component {
+export default class Explore extends Component {
   render() {
-    const { auth } = this.props;
-
-    if (!auth.uid) return <Redirect to='/' />
     return (
       <div className='explore_container'>
         <h2>All Channels</h2>
@@ -21,12 +16,3 @@ export class Explore extends Component {
     )
   }
 }
-
-const mapStateToProps = state => {
-    return {
-      error: state.music.error,
-      auth: state.firebase.auth,
-    }
-}
-
-export default connect(mapStateToProps, null)(Explore);

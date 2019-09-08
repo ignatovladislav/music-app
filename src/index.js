@@ -7,6 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import { BrowserRouter } from "react-router-dom"
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from './store/reducers/rootReducer'
@@ -32,7 +33,9 @@ sagaMiddleware.run(root);
 store.firebaseAuthIsReady.then(() => {
     ReactDOM.render(
         <Provider store={store}>
-            <App />
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
         </Provider>, 
     document.getElementById('root'));
     

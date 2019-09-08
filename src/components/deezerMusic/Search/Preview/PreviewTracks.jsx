@@ -1,14 +1,15 @@
 import React from 'react'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
-export const Track = props => {
-    const { track } = props;
+export const PreviewTracks = props => {
+    const { preview_tracks } = props;
     return (
-        <div className='search_container_item track'>
-            <h3>Tracks</h3>
+        <div className='search_container_item'>
+            <h3>Tracks ></h3>
             {
-                track ? track.map( (el, index) => {
+                preview_tracks ? preview_tracks.slice(0, 5).map((el, index) => {
                     return (
                         <div className='search_container_index' key={el.id} id={el.id}>
                             <div className='search_container_index_item' >
@@ -30,6 +31,6 @@ export const Track = props => {
                     )
                 }) : null
             }
-        </div>
+        </div> 
     )
 }
