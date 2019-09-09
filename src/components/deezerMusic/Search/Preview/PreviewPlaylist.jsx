@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 
 export class Container extends Component {
 
@@ -7,10 +7,11 @@ export class Container extends Component {
         this.props.history.push(`/playlist/${e.target.id}`)
     }
     render() {
-        const { preview_playlist } = this.props;
+        const { preview_playlist, data } = this.props;
+        const location = this.props.history.location.pathname.split('/')[2];
         return (
             <div className='search_container_item'>
-                <h3>Playlist ></h3>
+                <Link to={`/${location}/${data}`}><h3>Playlist ></h3></Link>
                 <div className='search_container_item_artist'>
                 {
                     preview_playlist ? preview_playlist.slice(0, 5).map(el => {

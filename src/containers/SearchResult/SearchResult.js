@@ -24,16 +24,16 @@ export class SearchResult extends Component {
             <div className='search_result_container'>
                 <h2>Serch result: {history.location.pathname.split('/')[2]}</h2>
                 {
-                    search_track_success ? <PreviewTracks history={history} preview_tracks={search_track_success} />: <Loading />
+                    search_track_success ? <PreviewTracks history={history} preview_tracks={search_track_success} data='tracks'/> : <Loading />
                 }
                 {
-                    search_artist_success ? <PreviewArtist preview_artist={search_artist_success}/> : <Loading />
+                    search_artist_success ? <PreviewArtist preview_artist={search_artist_success} data='artist' /> : <Loading />
                 }
                 {
-                    search_album_success ? <PreviewAlbum preview_album={search_album_success} /> : <Loading />
+                    search_album_success ? <PreviewAlbum preview_album={search_album_success} data='album' /> : <Loading />
                 }
                 {
-                    search_playlist_success ?  <PreviewPlaylist preview_playlist={search_playlist_success} /> : <Loading />
+                    search_playlist_success ?  <PreviewPlaylist preview_playlist={search_playlist_success} data='playlist' /> : <Loading />
                 }
             </div>
         )

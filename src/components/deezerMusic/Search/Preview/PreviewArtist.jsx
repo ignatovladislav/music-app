@@ -1,17 +1,16 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 
 export class Container extends Component {
     handleClick = (e) => {
         this.props.history.push(`/artist/${e.target.id}`)
-
     }
-
     render() {
-        const { preview_artist } = this.props;
+        const { preview_artist, data } = this.props;
+        const location = this.props.history.location.pathname.split('/')[2]
         return (
             <div className='search_container_item'>
-                <h3>Artist ></h3>
+                <Link to={`/${location}/${data}`}><h3>Artist ></h3></Link>
                 <div className='search_container_item_artist'>
                 {
                     preview_artist ? preview_artist.slice(0, 5).map(el => {

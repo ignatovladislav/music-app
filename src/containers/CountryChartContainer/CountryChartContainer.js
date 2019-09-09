@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { countryChartList } from '../../store/actions/musicActions'
+import { countryChartList, playlistTrackList } from '../../store/actions/musicActions'
 import { withRouter } from 'react-router-dom'
 
 import './CountryChartContainer.css'
@@ -12,30 +12,30 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 export class Container extends Component {
     componentDidMount() {
-        this.props.countryChartList(this.props.history.location.pathname.split('/')[2])
+        this.props.playlistTrackList(this.props.history.location.pathname.split('/')[2])
     }
     render() {
-        const { country_list_success } = this.props;
+        const { playlist_info, playlist_now } = this.props;
         return (
             <div className='county_chart_container'>
                 {
-                    country_list_success ?     <div className='info_playlist'>
+                    playlist_info ?     <div className='info_playlist'>
                         <div className='info_playlist_img'>
-                            <img src={country_list_success.picture_medium} alt='capcha'/>
+                            <img src={playlist_info.picture_medium} alt='capcha'/>
                         </div>
                         <div className='info_playlist_title'>
-                            {country_list_success.title}
-                            <p>{country_list_success.creator.name}</p>
+                            {playlist_info.title}
+                            <p>{playlist_info.creator.name}</p>
                         </div>
                     </div> : <Loading />
                 }
                 {
-                    country_list_success ? <AddAlbum /> : <Loading />
+                    playlist_now ? <AddAlbum /> : <Loading />
                 }
                 <div className='items_playlist'>
                 {
                   
-                    country_list_success ? country_list_success.tracks.data.map((el, index) => {
+                    Array.isArray(playlist_now) ? playlist_now.map((el, index) => {
                         return (
                             <div className='item_playlist_country' id={el.id} key={el.id}>
                                 <div className='index_item_playlist_country'>
@@ -70,12 +70,15 @@ const mapStateToProps = state => {
     return {
       error: state.music.error,
       auth: state.firebase.auth,
-      country_list_success: state.music.country_list_success,
+      playlist_now: state.music.playlist_now,
+      playlist_info: state.music.playlist_info,
+    //   country_list_success: state.music.country_list_success,
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
+        playlistTrackList: url => (dispatch(playlistTrackList(url))),
         countryChartList: url => (dispatch(countryChartList(url)))
     }
 }

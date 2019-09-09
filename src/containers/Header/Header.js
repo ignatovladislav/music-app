@@ -14,7 +14,7 @@ class Header extends Component {
     const search = auth.uid ? <Search /> : null;
     const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
     return (
-        <header>
+        <header className='header'>
           <Headline />
           { search }
           { links }

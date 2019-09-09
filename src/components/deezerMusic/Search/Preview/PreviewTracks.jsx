@@ -5,15 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 export const Container = props => {
-    // const data = 'tracks'
-    const { preview_tracks } = props;
-    // // console.log(props)
-    // const location = props.history.location.pathname.split('/')[2]
-    // // console.log(location)
+    const { preview_tracks, data } = props;
+    const location = props.history.location.pathname.split('/')[2]
     return (
         <div className='search_container_item'>
-            {/* <Link to={`/search/${location}/${data}`}></Link> */}
-            <h3>Tracks ></h3>
+            <Link to={`${location}/tracks`}><h3>Tracks ></h3></Link>
             {
                 preview_tracks ? preview_tracks.slice(0, 5).map((el, index) => {
                     return (

@@ -1,0 +1,17 @@
+.profile_container { 
+    margin: 6% 0 0 15.7%;
+    padding: 1%;
+    width: 100%;
+    border-bottom: 2px solid #fff;
+}
+
+.profile_container  > .header_profile_continer { 
+    
+}
+
+.profile_container > .header_profile_continer > h3 {
+    font-size: 35px;
+    width: 20%;
+    margin: 0 2%;
+    border-right: 5px solid #0269A4;
+}

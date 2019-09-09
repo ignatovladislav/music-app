@@ -17,7 +17,7 @@ const SignedInLinks = props => {
     
     {
       !auth.photoURL ? <Link to={`/user`} className='profile_container logout' style={{textAlign: 'center'}}>{profile.initials}</Link> :
-      <Link to={`/user`} className='profile_container logout' style={{height : '60px'}}>
+      <Link to={`/user`} className='profile_container_ava logout' style={{height : '60px'}}>
         <img src={auth.photoURL} alt='avatar' className='avatar_user'/>
       </Link>
     }

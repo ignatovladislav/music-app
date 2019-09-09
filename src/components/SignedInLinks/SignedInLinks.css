@@ -15,7 +15,7 @@
     width: 110px;
 }
 
-.profile_container {
+.profile_container_ava {
     margin-right: 35px;
 }
 
@@ -23,7 +23,7 @@
     border: 1px solid #fff;
 } 
 
-.profile_container > .avatar_user {
+.profile_container_ava > .avatar_user {
     width: 42px;
     display: block;
     margin: 0 auto;
