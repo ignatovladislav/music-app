@@ -47,7 +47,6 @@ export function* playlistNowSaga(data) {
             axios.get(`${urlPlaylist}/${tracks}`),
             axios.get(`${urlPlaylist}/${tracks}/tracks`)
         ])
-        console.log(playlist_info)
 
         yield put(actions.playlistInfoSuccess(playlist_info.data));
         yield put(actions.playlistTrackListSuccess(playlist_track.data.data));

@@ -16,10 +16,11 @@ export class Container extends Component {
     }
     render() {
         const { playlist_info, playlist_now } = this.props;
+        console.log(this.props)
         return (
             <div className='county_chart_container'>
                 {
-                    playlist_info ?     <div className='info_playlist'>
+                    playlist_info ?  <div className='info_playlist'>
                         <div className='info_playlist_img'>
                             <img src={playlist_info.picture_medium} alt='capcha'/>
                         </div>

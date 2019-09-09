@@ -11,10 +11,10 @@ export class Sidebar extends Component {
         const home = location.pathname === `/user` ? 'active_link' : null;
         const expore = location.pathname === `/expore` ? 'active_link' : null;
         const profile = location.pathname === `/profile/${auth.uid}` ? 'active_link' : null;
-        // const myMusic = location.pathname === `/user/${auth.uid}` ? 'active_link' : null;
-        // const tracks = location.pathname === `/user/${auth.uid}/tracklist` ? 'active_link' : null;
-        // const playlist = location.pathname ===  `/user/${auth.uid}/playlist` ? 'active_link' : null;
-        // const albums = location.pathname ===  `/user/${auth.uid}/albums` ? 'active_link' : null;
+        // const myMusic = location.pathname === `/profile/${auth.uid}` ? 'active_link' : null;
+        const tracks = location.pathname === `/profile/${auth.uid}/tracks` ? 'active_link' : null;
+        const playlist = location.pathname ===  `/profile/${auth.uid}/playlists` ? 'active_link' : null;
+        const albums = location.pathname ===  `/profile/${auth.uid}/albums` ? 'active_link' : null;
         
         return (
             <div className='sidebar_conainer'>
@@ -27,14 +27,14 @@ export class Sidebar extends Component {
                 <Link to={`/profile/${auth.uid}`} className={`sidebar_link `}> 
                     <div className={`sidebar_item ${profile}`}> My Music </div>
                 </Link>  
-                <Link to={`/user/${auth.uid}/tracklist`} className={`sidebar_link item`}>
-                    <div className={`sidebar_item user `}>Tracks</div>
+                <Link to={`/profile/${auth.uid}/tracks`} className={`sidebar_link item`}>
+                    <div className={`sidebar_item_profile ${tracks}`}>Tracks</div>
                 </Link>
-                <Link to={`/user/${auth.uid}/playlist`} className={`sidebar_link item`}>
-                    <div className={`sidebar_item user `}>Playlist</div>
+                <Link to={`/profile/${auth.uid}/playlists`} className={`sidebar_link item`}>
+                    <div className={`sidebar_item_profile ${playlist}`}>Playlist</div>
                 </Link>
-                <Link to={`/user/${auth.uid}/albums`} className={`sidebar_link item`}>
-                    <div className={`sidebar_item user `}>Albums</div>
+                <Link to={`/profile/${auth.uid}/albums`} className={`sidebar_link item`}>
+                    <div className={`sidebar_item_profile ${albums}`}>Albums</div>
                 </Link>
             </div>
         )

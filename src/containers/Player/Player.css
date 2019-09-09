@@ -3,7 +3,7 @@
     /* background-color: red; */
     background-color: #000;
     position: fixed;
-    z-index: 3;
+    z-index: 1000;
     bottom: 0;
     padding: 1% 0 1% 5%;
     display: flex;

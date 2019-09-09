@@ -2,11 +2,7 @@
     margin: 6% 0 0 15.7%;
     padding: 1%;
     width: 100%;
-    border-bottom: 2px solid #fff;
-}
-
-.profile_container  > .header_profile_continer { 
-    
+    /* border-bottom: 2px solid #fff; */
 }
 
 .profile_container > .header_profile_continer > h3 {
@@ -14,4 +10,30 @@
     width: 20%;
     margin: 0 2%;
     border-right: 5px solid #0269A4;
+}
+
+.profile_container > .profile_navbar_container {
+    display: flex;
+    /* background-color: red;  */
+    width: 75%;
+    margin: 1% 0 0 0;
+    padding: 1% 2%;
+    font-size: 25px;
+    justify-content: space-around;
+}
+
+.profile_container > .profile_navbar_container > div {
+    /* background-color: blue; */
+    padding: 1%;
+    cursor: pointer;
+    border-bottom: 5px solid transparent;
+}
+
+.active_link_profile {
+    border-bottom: 5px solid #0269A4;
+}
+
+.profile_item {
+    margin-top: 5%;
+    background-color: red;
 }

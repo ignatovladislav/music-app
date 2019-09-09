@@ -18,7 +18,7 @@ export class SearchResult extends Component {
     }
     render() {
         const { search_track_success, search_artist_success, search_album_success, search_playlist_success, history } = this.props;
-
+        console.log(this.props)
         // if (!auth.uid) return <Redirect to='/' />
         return (
             <div className='search_result_container'>
@@ -46,7 +46,8 @@ const mapStateToProps = (state) => ({
     search_track_success: state.music.search_track_success,
     search_artist_success: state.music.search_artist_success,
     search_album_success: state.music.search_album_success,
-    search_playlist_success: state.music.search_playlist_success
+    search_playlist_success: state.music.search_playlist_success,
+    userMusic: state.userMusic.userMusic
 })
 
 const mapDispatchToProps = dispatch => {

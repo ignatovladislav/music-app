@@ -17,7 +17,7 @@ import SearchResult from './containers/SearchResult/SearchResult'
 import Profile from './containers/Profile/Profile'
 
 import PrivateRoute from './router/privateRouter'
-// import { DetailItems } from './components/deezerMusic/Search/DetailItems'
+import { DetailItems } from './components/deezerMusic/Search/DetailItems'
 
 export class App extends Component {
   render() {
@@ -30,12 +30,15 @@ export class App extends Component {
             <Route path="/login" component={ Login } />
             <PrivateRoute path='/user' auth={auth.uid} component={ HomePageUser } />
             <PrivateRoute path='/search/:id' auth={auth.uid} component={ SearchResult } /> 
-            {/* <PrivateRoute path='/search/:id/track' auth={auth.uid} component={ DetailItems } /> */}
+           
             <PrivateRoute path='/playlist/:id' auth={auth.uid} component={ PlaylistContainers } />
             <PrivateRoute path='/album/:id' auth={auth.uid} component={ AlbumContainers } />
             <PrivateRoute path='/artist/:id' auth={auth.uid} component={ ArtistContainers } />
             <PrivateRoute path='/expore' auth={auth.uid} component={ Explore } />
             <PrivateRoute path='/profile/:id' auth={auth.uid} component={ Profile } />
+            <PrivateRoute path='/profile/:id/track' auth={auth.uid} component={ DetailItems } />
+            <PrivateRoute path='/profile/:id/playlists' auth={auth.uid} component={ DetailItems } />
+            <PrivateRoute path='/profile/:id/albums' auth={auth.uid} component={ DetailItems } />
             <PrivateRoute path='/:rest/:id' auth={auth.uid} component={ CountryChartContainer } />
             
           </Switch>
@@ -46,7 +49,7 @@ export class App extends Component {
 
 
 const mapStateToProps = state => {
-  return{
+  return {
     auth: state.firebase.auth
   }
 }

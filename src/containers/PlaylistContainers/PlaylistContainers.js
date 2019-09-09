@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { playlistTrackList } from '../../store/actions/musicActions'
+import { addTrack } from '../../store/actions/userMusicActions'
 import * as types from "../../store/actionTypes";
 import './PlaylistContainers.css'
 
@@ -18,8 +19,14 @@ export class PlaylistContainers extends Component {
         this.props.playlistTrackList(this.props.history.location.pathname.split('/')[2])
     }
 
+    handleClick = e => {
+        this.props.addTrack(e.target.id)
+        console.log(e.target.id)
+    }
+
     render() {
         const { playlist_now, playlist_info } = this.props;
+        console.log(this.props)
         return (
             <div className='playlist_containers'>
                 <div className='catalog_header_playlist'>
@@ -39,8 +46,9 @@ export class PlaylistContainers extends Component {
                                 { index+1 }
                                 
                             </div>
-                            <div className='index_item_playlist plus_icon'>
-                                <FontAwesomeIcon icon={ faPlus } size='1x' />
+                            <div className='index_item_playlist plus_icon' id={el.id} onClick={this.handleClick}>
+                                +
+                                {/* <FontAwesomeIcon icon={ faPlus } size='1x' /> */}
                             </div>
                             <div className='index_item_playlist'>
                                 <img src={el.album.cover_small} alt='exec' />
@@ -65,6 +73,7 @@ const mapStateToProps = state => {
       genreMusic: state.music.genreMusic,
       playlist_now: state.music.playlist_now,
       playlist_info: state.music.playlist_info,
+      user_track: state.userMusic.user_track
     }
 }
 
@@ -72,6 +81,7 @@ const mapDispatchToProps = dispatch => {
     return {
         addToSongs: () => dispatch({ type: types.ADD_SONGS }),
         playlistTrackList: (creds) => dispatch(playlistTrackList(creds)),
+        addTrack: url => dispatch(addTrack(url))
     }
 }
 
