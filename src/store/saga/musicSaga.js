@@ -1,15 +1,16 @@
 import { takeEvery, call, put, all } from 'redux-saga/effects'
-import {  ADD_SONGS, ADD_SONGS_GENRE_MUSIC, PLAYLIST_NOW, ALBUM_NOW, ARTIST_NOW, COUNTRY_LIST, SEARCH_ALL } from "../actionTypes"
+import {  ADD_SONGS, ADD_SONGS_GENRE_MUSIC, PLAYLIST_NOW, ALBUM_NOW, ARTIST_NOW, COUNTRY_LIST, SEARCH_ALL, TRACK_NOW_IN_PLAYER } from "../actionTypes"
 import * as actions from '../actions/musicActions'
 
 import axios from "axios"
 import { addClass } from '../addClass';
 
-const url = 'https://cors-anywhere.herokuapp.com/https://api.deezer.com'
+const url = 'https://cors-anywhere.herokuapp.com/https://api.deezer.com';
 const urlPlaylist = 'https://cors-anywhere.herokuapp.com/https://api.deezer.com/playlist';
 const urlAlbum = 'https://cors-anywhere.herokuapp.com/https://api.deezer.com/album';
 const urlArtist = 'https://cors-anywhere.herokuapp.com/https://api.deezer.com/artist';
-const urlSearch = 'https://cors-anywhere.herokuapp.com/https://api.deezer.com/search'
+const urlSearch = 'https://cors-anywhere.herokuapp.com/https://api.deezer.com/search';
+const ulrTrack = 'https://cors-anywhere.herokuapp.com/https://api.deezer.com/track';
 
 export function* musicSaga() {
 	try {
@@ -118,6 +119,20 @@ export function* searchAll(data) {
 	}
 }
 
+export function* trackNowInPlayerSaga(data) {
+    const trackId = data.payload;
+	try {
+        const response = yield call(axios, {
+            method: "get",
+            url: `${ulrTrack}/${trackId}`
+        });
+        const track_now_in_player = response.data;
+        yield put(actions.trackNowInPlayerSuccess(track_now_in_player))
+	} catch (error) {
+		yield put(actions.songsError(error));
+	}
+}
+
 export function* watcherMusicSaga() {
     yield takeEvery(ADD_SONGS, musicSaga);
     yield takeEvery(ADD_SONGS_GENRE_MUSIC, musicSagaGenre);
@@ -126,4 +141,5 @@ export function* watcherMusicSaga() {
     yield takeEvery(ARTIST_NOW, aristNowSaga);
     yield takeEvery(COUNTRY_LIST, countryPlaylist);
     yield takeEvery(SEARCH_ALL, searchAll);
+    yield takeEvery(TRACK_NOW_IN_PLAYER, trackNowInPlayerSaga);
 }

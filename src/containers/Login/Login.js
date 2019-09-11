@@ -13,7 +13,7 @@ class Login extends Component {
     }
 
     componentDidUpdate = (prevProps, prevState) => {
-        if (prevProps !== this.props && !this.props.authError && this.props.auth.uid !== undefined) {
+        if (prevProps.auth.uid !== this.props.auth.uid && !this.props.authError && this.props.auth.uid !== undefined) {
             this.props.history.push('/user')
         }
     }
@@ -25,8 +25,7 @@ class Login extends Component {
     }
 
     handleSubmit = e => {
-        e.preventDefault();
-        
+        e.preventDefault();      
         this.props.singIn(this.state)
     }
 

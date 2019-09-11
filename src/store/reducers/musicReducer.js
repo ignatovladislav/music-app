@@ -20,6 +20,8 @@ const initilalState = {
   search_artist_success: null,
   search_album_success: null,
   search_playlist_success: null,
+  track_now: null,
+  track_now_success: null,
 };
 
 
@@ -165,6 +167,21 @@ export default (state = initilalState, action) => {
                 search_playlist_success: action.payload,
             };
         }
+      
+        case types.TRACK_NOW_IN_PLAYER: {
+            return {
+                ...state,
+                track_now: action.payload,
+            };
+        }
+
+        case types.TRACK_NOW_IN_PLAYER_SUCCESS: {
+            return {
+                ...state,
+                track_now_success: action.payload,
+            };
+        }
+
         case types.SONGS_ERROR: {
             return {
                 ...state,

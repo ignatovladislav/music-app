@@ -1,5 +1,5 @@
 .playlist_containers {
-    padding: 2% 5% 0 17%;
+    padding: 2% 5% 4% 17%;
     margin-top: 5%;
 }
 
@@ -19,7 +19,7 @@
 
 .playlist_containers > .catalog_header_items {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
     margin-bottom: 2%;
 }
@@ -27,17 +27,24 @@
 .playlist_containers > .catalog_playlist > .item_playlist {
     width: 100%;
     border: 1px solid #fff;
+    border-radius: 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    
+    justify-content: space-evenly;
     padding: 1%;
     font-size: 20px;
     margin-bottom: 2%;
     cursor: pointer;
 }
 
+.playlist_containers > .catalog_playlist > .item_playlist > .plus_icon {
+   font-size: 35px;
+}
 .playlist_containers > .catalog_playlist > .item_playlist > .index_item_playlist {
-    width: 25%;
+    width: 15%;
+    flex-wrap: nowrap;
+    text-align: center;
 }
 
 
@@ -60,6 +67,6 @@
     margin-right: 5%;
 }
 
-.add_all:hover {
+/* .add_all:hover {
     background-color: rgb(128, 111, 111);
-}
+} */

@@ -15,51 +15,53 @@ class Player extends Component {
         } 
     }
 
-    filter = data => {
-        data = data.data
-        for (let i = 0; i < data.length; i++ ) {
-            if (data[i].id === this.props.track_now) {
-                console.log(i)
-                this.getNextTrack(data[i], data)
-            }
-        }
-    }
+    // filter = data => {
+    //     data = data.data
+    //     for (let i = 0; i < data.length; i++ ) {
+    //         if (data[i].id === this.props.track_now) {
+    //             console.log(i)
+    //             this.getNextTrack(data[i], data)
+    //         }
+    //     }
+    // }
 
 
-    getNextTrack = (trackNow, data) => {
-        for (let i = 0; i < data.length; i++ ) {
-            if (data[i].id === trackNow.id) {
-                this.getNextTrackP(i, trackNow, data)
-            }
-        }
-    }   
-    getNextTrackP = (num, trackNow, data) => {
-        let next = num + 1
-        if (num === 9) {
-            next = 0
-            this.setState({ index_track : num, track_now: trackNow, next_track: data[next] })
-        } else {
-            this.setState({ index_track : num, track_now: trackNow, next_track: data[next] })
-        }
-    }
+    // getNextTrack = (trackNow, data) => {
+    //     for (let i = 0; i < data.length; i++ ) {
+    //         if (data[i].id === trackNow.id) {
+    //             this.getNextTrackP(i, trackNow, data)
+    //         }
+    //     }
+    // }   
+    // getNextTrackP = (num, trackNow, data) => {
+    //     let next = num + 1
+    //     if (num === 9) {
+    //         next = 0
+    //         this.setState({ index_track : num, track_now: trackNow, next_track: data[next] })
+    //     } else {
+    //         this.setState({ index_track : num, track_now: trackNow, next_track: data[next] })
+    //     }
+    // }
 
 
 
-    handleClick = e => {
-        if(e.target.id === 'next_songs') {
-            this.setState({ track_now: this.state.next_track })
-        }
-    }
+    // handleClick = e => {
+    //     if(e.target.id === 'next_songs') {
+    //         this.setState({ track_now: this.state.next_track })
+    //     }
+    // }
   
     render() {
-        const { track_now } = this.state;
+        const { track_now_success } = this.props;
+        console.log(track_now_success)
+        
         return (
             <div className='player_container'>
                 <PlayerControls handleClick={this.handleClick} />
                 {
-                    track_now ?
-                        <PlayerTrack src={track_now.preview} 
-                            title={track_now.title}  artist={track_now.artist.name}/> :
+                    track_now_success ?
+                        <PlayerTrack src={track_now_success.preview} 
+                            title={track_now_success.title}  artist={track_now_success.artist.name}/> :
                         <PlayerTrack /> 
                 }
             </div>
@@ -70,7 +72,7 @@ class Player extends Component {
 const mapStateToProps = state => {
     return {
         songs: state.music.songs,
-        track_now: state.music.track_now
+        track_now_success: state.music.track_now_success
     }
 }
 

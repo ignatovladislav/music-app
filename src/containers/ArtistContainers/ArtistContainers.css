@@ -1,5 +1,5 @@
 .artist_containers {
-    padding: 2% 5% 0 17%;
+    padding: 2% 5% 6% 17%;
     margin-top: 5%;
 }
 
@@ -23,9 +23,10 @@
 .artist_containers > .item_artist {
     width: 100%;
     border: 1px solid #fff;
+    border-radius: 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 1%;
     font-size: 20px;
     margin-bottom: 2%;
@@ -34,25 +35,30 @@
 
 .artist_containers > .item_artist > .index_item_artist {
     width: 25%;
+    flex-wrap: nowrap;
+    text-align: center;
+}
+
+.artist_containers > .item_artist > .plus_icon  {
+    font-size: 35px;
 }
 
 .artist_containers > .item_artist:hover {
     background-color: rgb(128, 111, 111);
 }
 
-.test {
+.albums_containers {
     display: flex;
     flex-wrap: wrap;
 }
 
-.test > .item_artist_album {
+.albums_containers > .item_artist_album {
     width: 25%;
     padding: 1%;
-    /* margin: 2%; */
     text-align: center;
     cursor: pointer;
 }
 
-.test > .item_artist_album:hover {
+.albums_containers > .item_artist_album:hover {
     background-color: rgb(128, 111, 111);
 }

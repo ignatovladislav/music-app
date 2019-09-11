@@ -7,6 +7,7 @@
 
 .explore_container > h2 {
     font-size: 45px;
+    margin: 0;
 }
 
 .explore_container_block > .explore_container_content {

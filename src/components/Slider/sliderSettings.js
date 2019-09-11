@@ -2,7 +2,6 @@ import React from 'react'
 
 const NextArrow = props => {
     const { className, style, onClick } = props;
-    // console.log(props)
     return (
         <div
             className={className}

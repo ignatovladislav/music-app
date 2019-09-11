@@ -105,3 +105,15 @@ export const searchPlaylistSuccess = payload => ({
   type: types.SEARCH_PLAYLIST_SUCCESS,
   payload 
 });
+
+
+export const trackNowInPlayer = payload => ({
+  type: types.TRACK_NOW_IN_PLAYER,
+  payload 
+});
+
+
+export const trackNowInPlayerSuccess = payload => ({
+  type: types.TRACK_NOW_IN_PLAYER_SUCCESS,
+  payload 
+});

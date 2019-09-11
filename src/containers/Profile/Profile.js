@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link, Route } from 'react-router-dom'
-import Item from "./Item";
+import ProfileTrack from "./ProfileTrack";
+import ProfilePlaylist from "./ProfilePlaylist";
 import './Profile.css'
 
 export class Profile extends Component {
     render() {
-        const { location, match, auth } = this.props;
-        console.log(this.props)
+        const { location, match, auth, user_track } = this.props;
         const highlights = location.pathname === `/profile/${auth.uid}` ? 'active_link_profile' : null;
         const tracks = location.pathname === `/profile/${auth.uid}/tracks` ? 'active_link_profile' : null;
         const playlists = location.pathname === `/profile/${auth.uid}/playlists` ? 'active_link_profile' : null;
@@ -33,7 +33,9 @@ export class Profile extends Component {
                     </Link>
                 </div>
 
-                <Route exact path={`${match.path}/:topicId`} component={Item} />
+                <Route exact path={`${match.path}/tracks`} component={ ProfileTrack } />
+                <Route path={`${match.path}/playlists`} component={ ProfilePlaylist } />
+                {/* <Route path={`${match.path}/albums`} component={ProfileAlbums} /> */}
             </div>
         )
     }
@@ -41,7 +43,8 @@ export class Profile extends Component {
 
 const mapStateToProps = state => {
     return {
-      auth: state.firebase.auth
+      auth: state.firebase.auth,
+      user_track: state.userMusic.user_track,
     }
 }
 

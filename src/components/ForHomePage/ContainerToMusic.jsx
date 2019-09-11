@@ -1,7 +1,7 @@
 import React from 'react'
-import Album from '../Songs/Album'; 
-import { Artist } from '../Songs/Artist'; 
-import { Playlist } from '../Songs/Playlist'; 
+import { Album } from './Album'; 
+import { Artist } from './Artist'; 
+import { Playlist } from './Playlist'; 
 
 
 export const ContainerToMusic = props => {

@@ -1,5 +1,5 @@
 .album_containers {
-    padding: 2% 5% 0 17%;
+    padding: 2% 5% 6% 17%;
     margin-top: 5%;
 }
 
@@ -28,15 +28,25 @@
 .album_containers > .item_album {
     width: 100%;
     border: 1px solid #fff;
+    border-radius: 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding: 1%;
     font-size: 20px;
     margin-bottom: 2%;
     cursor: pointer;
 }
 
+.album_containers > .item_album > .index_item_album {
+    width: 15%;
+    flex-wrap: nowrap;
+    text-align: center;
+}
+
+.album_containers > .item_album >  .plus_icon {
+    font-size: 35px;
+}
 .album_containers > .item_album:hover {
     background-color: rgb(128, 111, 111);
 }

@@ -2,7 +2,7 @@
     width: 80%;
     margin-left: 18%;
     margin-top: 5%;
-    padding-top: 1%;
+    padding: 1% 0 5% 0;
 }
 
 .search_result_container > .search_container_item > .search_container_index {

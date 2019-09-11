@@ -1,16 +1,16 @@
 import React from 'react'
-import './Songs.css'
+// import './Songs.css'
 
 import Slider from "react-slick"
-import { settings } from '../../Slider/sliderSettings'
-import { Loading } from '../../Loading/Loading'
+import { settings } from '../Slider/sliderSettings'
+import { Loading } from '../Loading/Loading'
 
 export const Playlist = props => {
-
+    const { songs, history } = props;
+    
     const handleClick = (e) => {
-        props.history.push(`/playlist/${e.target.id}`)
+        history.push(`/playlist/${e.target.id}`)
     }
-    const { songs } = props
     return (
         <div className='playlists_top'>
             <h2>Popular playlist</h2>

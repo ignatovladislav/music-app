@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import './HomePageUser.css';
 
-import { ContainerToMusic } from '../../components/deezerMusic/ContainerTopMusic/ContainerToMusic';
+import { ContainerToMusic } from '../../components/ForHomePage/ContainerToMusic';
 import { Loading } from '../../components/Loading/Loading';
 import { addToSongs } from '../../store/actions/musicActions'
 

@@ -1,15 +1,13 @@
 import React from 'react'
-import './Songs.css'
 
 import Slider from "react-slick"
-import { settings } from '../../Slider/sliderSettings'
-import { Loading } from '../../Loading/Loading'
-import { connect } from "react-redux"
+import { settings } from '../Slider/sliderSettings'
+import { Loading } from '../Loading/Loading'
 
-const Album = props => {
-    const { songs } = props;
+export const Album = props => {
+    const { songs, history } = props;
     const handleClick = (e) => {
-        props.history.push(`album/${e.target.id}`)
+        history.push(`album/${e.target.id}`)
     }
     return (
         <div className='albums_top'>
@@ -33,16 +31,3 @@ const Album = props => {
         </div>
     )
 }
-
-const mapStateToProps = state => {
-    return {
-      songs: state.music.songs,
-      error: state.music.error,
-      auth: state.firebase.auth,
-      track_now: state.music.track_now
-    }
-}
-
-
-
-export default connect(mapStateToProps, null)(Album);

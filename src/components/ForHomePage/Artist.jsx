@@ -1,9 +1,8 @@
 import React from 'react'
-import './Songs.css'
 
 import Slider from "react-slick"
-import { settings } from '../../Slider/sliderSettings'
-import { Loading } from '../../Loading/Loading'
+import { settings } from '../Slider/sliderSettings'
+import { Loading } from '../Loading/Loading'
 
 export const Artist = props => {
     const { songs, history } = props

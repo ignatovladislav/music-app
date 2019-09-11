@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { artistInfo } from '../../store/actions/musicActions'
+import { artistInfo, trackNowInPlayer } from '../../store/actions/musicActions'
+import { addTrack } from '../../store/actions/userMusicActions'
 import './ArtistContainers.css'
 
 import { Loading } from '../../components/Loading/Loading';
-import { InfoArtist } from '../../components/deezerMusic/Artist/InfoArtist';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import { AddAlbum } from '../../components/AddAlbum/AddAlbum'
+import Container from './Container';
 
 export class ArtistContainers extends Component {
     componentDidMount() {
@@ -19,59 +16,29 @@ export class ArtistContainers extends Component {
         this.props.history.push(`/album/${e.target.id}`)
     }
 
+    trackNow = e => {
+        this.props.trackNowInPlayer(e.target.id)
+    }
+
+    addTrack = e => {
+        this.props.addTrack(e.target.id)
+    }
+
     render() {
         const { artist_info_success, artist_tracklist_success, artist_album_success  } = this.props;
         return (
-            <div className='artist_containers'>
-                <div className='catalog_header_artist'>
-                    {
-                        artist_info_success ? <InfoArtist name={artist_info_success.name} img={artist_info_success.picture_medium} /> : <Loading />
-                    }
-                </div>   
+            <>
                 {
-                    artist_tracklist_success ? <AddAlbum/> : <Loading />
-                }     
-                {
-                    artist_tracklist_success ? artist_tracklist_success.map((el, index) => {
-                        return (
-                            <div className="item_artist" id={el.id} key={el.id}>
-                                <div className='index_item_artist' >
-                                    { index+1 }
-                                </div>
-                                <div className='index_item_artist plus_icon'>
-                                    <FontAwesomeIcon icon={ faPlus } size='1x' />
-                                </div> 
-                                <div className='index_item_artist'>
-                                    <img src={el.album.cover_small} alt='caphca'/>
-                                </div>
-                                <div className='index_item_artist'>
-                                    {el.title}
-                                </div>
-
-                            </div>
-                        )
-                    }) : <Loading />
-                } 
-                <h3>Albums</h3>      
-                <div className='test'>    
-                {
-                    artist_album_success ? artist_album_success.map(el => {
-                        console.log(el)
-                        return (
-                            <div id={el.id} className='item_artist_album' key={el.id} onClick={this.handleClick}>
-                                <div id={el.id} className='index_item_artist'>
-                                    <img id={el.id} src={el.cover_medium} alt='caphca'/>
-                                </div>
-                                <div id={el.id} className='index_item_artist'>
-                                    {el.title}
-                                </div> 
-
-                            </div>
-                        ) 
-                    }) : <Loading />
+                    artist_info_success && artist_tracklist_success && artist_album_success ? 
+                    <Container
+                        artist_info_success={artist_info_success}
+                        artist_tracklist_success={artist_tracklist_success}
+                        artist_album_success={artist_album_success}
+                        playNow={this.trackNow}
+                        addTrack={this.addTrack}
+                    /> : <Loading />
                 }
-                </div>
-            </div>
+            </>
         )
     }
 }
@@ -81,12 +48,13 @@ const mapStateToProps = state => ({
     artist_tracklist_success: state.music.artist_tracklist_success,
     artist_album_success: state.music.artist_album_success,
     error: state.music.error,
-    auth: state.firebase.auth,
 })
 
 const mapDispatchToProps = dispatch => {
     return {
         artistInfo: url => dispatch(artistInfo(url)),
+        trackNowInPlayer: url => dispatch(trackNowInPlayer(url)),
+        addTrack: url => (dispatch(addTrack(url))),
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ArtistContainers)
