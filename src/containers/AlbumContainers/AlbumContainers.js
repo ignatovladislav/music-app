@@ -10,7 +10,7 @@ import Container from './Container';
 export class AlbumContainers extends Component {
     state = { loading: true, add_album: false }
     componentDidMount() {
-        if(this.contains(this.props.user_album, this.props.album_now_success)) {
+        if (this.contains(this.props.user_album, this.props.location.pathname.split('/')[2])) {
             this.setState({ add_album: true })
             this.timeOut()
             this.props.albumTrackList(this.props.history.location.pathname.split('/')[2])   
@@ -30,7 +30,7 @@ export class AlbumContainers extends Component {
     }
 
     contains = (array, obj) => {
-        return array.some(item => item.id === obj.id)
+        return array.some(item => item.id === +obj)
     }
 
     trackNow = e => {
@@ -58,8 +58,10 @@ export class AlbumContainers extends Component {
         }, 2000);
     });
     render() {
-        const { album_now_success } = this.props;
+        const { album_now_success, user_track } = this.props;
         const { loading, add_album } = this.state;
+
+        console.log(user_track)
         if (loading) return <Loading />
         return (
             <>
@@ -82,7 +84,8 @@ export class AlbumContainers extends Component {
 const mapStateToProps = state => ({
     error: state.music.error,
     album_now_success: state.music.album_now_success,
-    user_album: state.userMusic.user_album
+    user_album: state.userMusic.user_album,
+    user_track: state.userMusic.user_track
 })
 
 const mapDispatchToProps = dispatch => ({

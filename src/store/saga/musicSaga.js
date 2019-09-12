@@ -47,9 +47,13 @@ export function* playlistNowSaga(data) {
             axios.get(`${urlPlaylist}/${tracks}`),
             axios.get(`${urlPlaylist}/${tracks}/tracks`)
         ])
-
+        // console.log(playlist_track)
+        const upgrade_playlist = playlist_track.data.data.map(el => {
+            return {...el, check: false}
+        })
+        // console.log(a)
         yield put(actions.playlistInfoSuccess(playlist_info.data));
-        yield put(actions.playlistTrackListSuccess(playlist_track.data.data));
+        yield put(actions.playlistTrackListSuccess(upgrade_playlist));
 	} catch (error) {
 		yield put(actions.songsError(error));
 	}

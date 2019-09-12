@@ -8,6 +8,7 @@ import play from '../../assets/play-button.png'
 import DeleteAllPlaylist from '../../components/AddAllPlaylist/DeleteAllPlaylist';
 
 export default class Container extends Component {
+    
     render() {
         const { playlist_info, playlist_now, playNow, state_button, addTrack, addPlaylist, deletePlaylist } = this.props;
         return (

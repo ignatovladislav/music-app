@@ -10,7 +10,7 @@ import Container from './Container';
 export class PlaylistContainers extends Component {
     state = { loading: true, add_album: false }
     componentDidMount() {
-        if(this.contains(this.props.user_playlist, this.props.playlist_info)) {
+        if(this.contains(this.props.user_playlist, this.props.location.pathname.split('/')[2])) {
             this.setState({ add_album: true })
             this.timeOut()
             this.props.playlistTrackList(this.props.history.location.pathname.split('/')[2])   
@@ -21,16 +21,16 @@ export class PlaylistContainers extends Component {
        
     }
 
-    componentDidUpdate(prevProps) {
-        if(prevProps.user_playlist !== this.props.user_playlist) {
+    componentDidUpdate = (prevProps, prevState) => {
+        if (prevProps.user_playlist !== this.props.user_playlist) {
             if (this.contains(this.props.user_playlist, this.props.playlist_info)) {
                 this.setState({ add_album: true })
             }
-        }
+        } 
     }
 
     contains = (array, obj) => {
-        return array.some(item => item.id === obj.id)
+        return array.some(item => item.id === +obj)
     }
 
     addTrack = e => {   
@@ -60,13 +60,14 @@ export class PlaylistContainers extends Component {
     
 
     render() {
-        const { playlist_now, playlist_info, user_playlist } = this.props;
+        const { playlist_now, playlist_info, user_playlist, user_track } = this.props;
         const { loading, add_album } = this.state;
 
         if (loading) return <Loading />
         return (
             <>
                 <Container 
+                    user_track={user_track}
                     user_playlist={user_playlist}
                     playlist_now={playlist_now} 
                     playlist_info={playlist_info} 
@@ -75,6 +76,7 @@ export class PlaylistContainers extends Component {
                     addTrack={this.addTrack}
                     addPlaylist={this.addPlaylist}
                     deletePlaylist={this.deletePlaylist}
+                    // state_button={}
                 /> 
             </>
         )
@@ -84,7 +86,8 @@ export class PlaylistContainers extends Component {
 const mapStateToProps = state => ({
     playlist_now: state.music.playlist_now,
     playlist_info: state.music.playlist_info,
-    user_playlist: state.userMusic.user_playlist
+    user_playlist: state.userMusic.user_playlist,
+    user_track: state.userMusic.user_track
 })
 
 const mapDispatchToProps = dispatch => ({

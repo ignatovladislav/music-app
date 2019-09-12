@@ -11,7 +11,7 @@ import Container from './Conteiner'
 export class CountryChart extends Component {
     state = { loading: true, add_album: false }
     componentDidMount() {
-        if (this.contains(this.props.user_playlist, this.props.playlist_info)) {
+        if (this.contains(this.props.user_playlist, this.props.history.location.pathname.split('/')[2])) {
             this.setState({ add_album: true })
             this.timeOut()
             this.props.playlistTrackList(this.props.history.location.pathname.split('/')[2])   
@@ -31,7 +31,7 @@ export class CountryChart extends Component {
     }
 
     contains = (array, obj) => {
-        return array.some(item => item.id === obj.id)
+        return array.some(item => item.id === +obj)
     }
 
     addTrack = e => {   
