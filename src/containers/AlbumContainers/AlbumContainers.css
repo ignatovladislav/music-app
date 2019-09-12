@@ -1,6 +1,7 @@
 .album_containers {
-    padding: 2% 5% 6% 17%;
+    padding: 2% 5% 8% 17%;
     margin-top: 5%;
+    position: relative;
 }
 
 .album_containers > .catalog_header_album > .info_album {

@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 
 import { InfoPlaylist } from '../../components/deezerMusic/Playlist/InfoPlaylist';
 import AddAllPlaylist from '../../components/AddAllPlaylist/AddAllPlaylist';
+import DeleteAllPlaylist from '../../components/AddAllPlaylist/DeleteAllPlaylist';
 
 import play from '../../assets/play-button.png'
 
+
 export default class Container extends Component {
     render() {
-        const { playlist_info, playlist_now, addPlaylist, playNow, addTrack } = this.props;
-        console.log(this.props)
+        const { playlist_info, playlist_now, addPlaylist, playNow, addTrack, state_button, deletePlaylist } = this.props;
         return (
             <div className='playlist_containers'>
                 <div className='catalog_header_playlist'>
@@ -17,7 +18,8 @@ export default class Container extends Component {
                     }
                 </div>
                 {
-                    playlist_info ? <AddAllPlaylist id={playlist_info.id} addPlaylist={addPlaylist} /> : null
+                   !state_button ? <AddAllPlaylist id={playlist_info.id} addPlaylist={addPlaylist} /> : 
+                   <DeleteAllPlaylist id={playlist_info.id} deletePlaylist={deletePlaylist} />
                 }         
                 <div className='catalog_playlist'>
                     {

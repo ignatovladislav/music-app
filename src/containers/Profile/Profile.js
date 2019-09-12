@@ -3,16 +3,18 @@ import { connect } from 'react-redux'
 import { Link, Route } from 'react-router-dom'
 import ProfileTrack from "./ProfileTrack";
 import ProfilePlaylist from "./ProfilePlaylist";
+import ProfileAlbums from "./ProfileAlbums";
+import ProfileHighlights from './ProfileHighlights';
+
 import './Profile.css'
 
 export class Profile extends Component {
     render() {
-        const { location, match, auth, user_track } = this.props;
+        const { location, match, auth  } = this.props;
         const highlights = location.pathname === `/profile/${auth.uid}` ? 'active_link_profile' : null;
         const tracks = location.pathname === `/profile/${auth.uid}/tracks` ? 'active_link_profile' : null;
         const playlists = location.pathname === `/profile/${auth.uid}/playlists` ? 'active_link_profile' : null;
         const albums = location.pathname === `/profile/${auth.uid}/albums` ? 'active_link_profile' : null;
-
         return (
             <div className='profile_container'>
                 <header className='header_profile_continer'>
@@ -33,19 +35,19 @@ export class Profile extends Component {
                     </Link>
                 </div>
 
-                <Route exact path={`${match.path}/tracks`} component={ ProfileTrack } />
+                <Route exact path={`${match.path}`} component={ ProfileHighlights } />
+                <Route path={`${match.path}/tracks`} component={ ProfileTrack } />
                 <Route path={`${match.path}/playlists`} component={ ProfilePlaylist } />
-                {/* <Route path={`${match.path}/albums`} component={ProfileAlbums} /> */}
+                <Route path={`${match.path}/albums`} component={ ProfileAlbums } />
             </div>
         )
     }
 }
 
-const mapStateToProps = state => {
-    return {
-      auth: state.firebase.auth,
-      user_track: state.userMusic.user_track,
-    }
-}
+const mapStateToProps = state => ({
+    auth: state.firebase.auth,
+})
+
+
 
 export default connect(mapStateToProps, null)(Profile)

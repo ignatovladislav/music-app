@@ -20,7 +20,7 @@ import createSagaMiddleware from "redux-saga";
 
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(rootReducer, 
+const store = createStore( rootReducer,
     compose(
         applyMiddleware(sagaMiddleware, thunk.withExtraArgument({ getFirebase, getFirestore })),
         reactReduxFirebase(firebase, { userProfile: 'users', useFirestoreForProfile: true, attachAuthIsReady: true }),

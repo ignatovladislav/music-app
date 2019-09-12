@@ -19,6 +19,7 @@ import Profile from './containers/Profile/Profile'
 import PrivateRoute from './router/privateRouter'
 import { DetailItems } from './components/deezerMusic/Search/DetailItems'
 
+
 export class App extends Component {
   render() {
     const { auth } = this.props;
@@ -28,6 +29,7 @@ export class App extends Component {
           <Switch>
             <Route exact path="/" component={ Main } /> 
             <Route path="/login" component={ Login } />
+            <Route path="/register" component={ Singup } />
             <PrivateRoute path='/user' auth={auth.uid} component={ HomePageUser } />
             <PrivateRoute path='/search/:id' auth={auth.uid} component={ SearchResult } /> 
            
@@ -48,11 +50,9 @@ export class App extends Component {
 }
 
 
-const mapStateToProps = state => {
-  return {
-    auth: state.firebase.auth
-  }
-}
+const mapStateToProps = state => ({
+  auth: state.firebase.auth
+})
 
 
 export default connect(mapStateToProps, null)(App)

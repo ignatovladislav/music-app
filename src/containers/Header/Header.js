@@ -23,11 +23,9 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    auth: state.firebase.auth,
-    authError: state.auth.authError
-  }
-}
+const mapStateToProps = state => ({
+  auth: state.firebase.auth,
+  authError: state.auth.authError
+})
 
-export default connect(mapStateToProps)(Header)
+export default connect(mapStateToProps, null)(Header)

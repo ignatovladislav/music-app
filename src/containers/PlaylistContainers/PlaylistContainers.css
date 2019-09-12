@@ -1,5 +1,5 @@
 .playlist_containers {
-    padding: 2% 5% 4% 17%;
+    padding: 2% 5% 5% 17%;
     margin-top: 5%;
 }
 
@@ -61,12 +61,20 @@
     padding: 1%;
     text-transform: uppercase;
     cursor: pointer;
+    font-size: 20px;
+    align-items: center;
 }
 
 .add_all_icon {
     margin-right: 5%;
 }
 
-/* .add_all:hover {
+.add_all:hover {
     background-color: rgb(128, 111, 111);
-} */
+}
+
+.load {
+    width: 500px;
+    height: 400px;
+    background-color: red;
+}

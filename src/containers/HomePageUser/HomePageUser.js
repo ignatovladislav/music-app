@@ -23,17 +23,13 @@ export class HomePageUser extends Component {
   }
 }
 
-const mapStateToProps = state => {
-    return {
-      songs: state.music.songs,
-      error: state.music.error,
-      auth: state.firebase.auth,
-      genreMusic: state.music.genreMusic,
-      track_now: state.music.track_now
-    }
-}
+const mapStateToProps = state => ({
+  songs: state.music.songs,
+  error: state.music.error,
+  track_now: state.music.track_now
+})
 
 
 
-export default connect(mapStateToProps, {addToSongs})(HomePageUser);
+export default connect(mapStateToProps, { addToSongs })(HomePageUser);
 

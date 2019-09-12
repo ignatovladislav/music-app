@@ -4,10 +4,9 @@ import './Footer.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInstagram, faFacebook, faYoutube } from '@fortawesome/free-brands-svg-icons'
 
-export const Footer = props => {
+export const Footer = () => {
     return (
         <footer className='footer_container'>
-            {/* <Headline /> */}
             <div className='footer_container_ifraime'>
                 <h5>By Ignatov Vladislav</h5>
             </div>

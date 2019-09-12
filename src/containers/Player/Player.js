@@ -3,7 +3,6 @@ import './Player.css'
 
 import { PlayerControls } from '../../components/PlayerComponents/PlayerControls/PlayerControls'
 import { PlayerTrack } from '../../components/PlayerComponents//PlayerTrack/PlayerTrack'
-// import { PlayerOptions } from '../../components/PlayerComponents/PlayerOptions/PlayerOptions'
 import { connect } from "react-redux";
 
 class Player extends Component {
@@ -53,7 +52,6 @@ class Player extends Component {
   
     render() {
         const { track_now_success } = this.props;
-        console.log(track_now_success)
         
         return (
             <div className='player_container'>
@@ -69,11 +67,9 @@ class Player extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        songs: state.music.songs,
-        track_now_success: state.music.track_now_success
-    }
-}
+const mapStateToProps = state => ({
+    songs: state.music.songs,
+    track_now_success: state.music.track_now_success
+})
 
 export default connect(mapStateToProps, null)(Player);

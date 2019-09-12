@@ -1,8 +1,6 @@
 .profile_container { 
     margin: 6% 0 0 15.7%;
-    padding: 1%;
-    /* width: 100%; */
-    /* border-bottom: 2px solid #fff; */
+    padding: 1% 1% 5% 1%;
 }
 
 .profile_container > .header_profile_continer > h3 {
@@ -14,7 +12,6 @@
 
 .profile_container > .profile_navbar_container {
     display: flex;
-    /* background-color: red;  */
     width: 75%;
     margin: 1% 0 0 0;
     padding: 1% 2%;
@@ -23,7 +20,6 @@
 }
 
 .profile_container > .profile_navbar_container > div {
-    /* background-color: blue; */
     padding: 1%;
     cursor: pointer;
     border-bottom: 5px solid transparent;
@@ -35,8 +31,7 @@
 
 .profile_item {
     margin-top: 5%;
-    padding: 0 5% 5% 0;;
-    /* background-color: red; */
+    padding: 0 5% 5% 0;
 }
 
 .profile_item > .item_artist {
@@ -81,5 +76,43 @@
 }
 
 .profile_item_playlist > .item_playlist:hover {
+    background-color: rgb(128, 111, 111);
+}
+
+.index_item_artist_delete {
+    font-size: 35px;
+    border: 1px solid transparent
+}
+
+.index_item_artist_delete:hover {
+    border: 1px solid #fff;
+}
+
+.profile_item_highlights {
+    margin-top: 2%;
+}
+
+.profile_item_highlights > .preview_container_track {
+    width: 100%;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 1%;
+    font-size: 20px;
+    margin-bottom: 2%;
+    cursor: pointer;
+}
+
+.profile_item_highlights > .preview_container_track > .preview_container_track_item {
+    width: 25%;
+    padding: 1%;
+    text-align: center;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.profile_item_highlights > .preview_container_track:hover {
     background-color: rgb(128, 111, 111);
 }

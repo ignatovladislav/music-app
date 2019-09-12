@@ -8,7 +8,9 @@ import { Loading } from '../../components/Loading/Loading';
 import Container from './Container';
 
 export class ArtistContainers extends Component {
+    state = { loading: true }
     componentDidMount() {
+        this.timeOut()
         this.props.artistInfo(this.props.history.location.pathname.split('/')[2]);
     }
 
@@ -16,16 +18,16 @@ export class ArtistContainers extends Component {
         this.props.history.push(`/album/${e.target.id}`)
     }
 
-    trackNow = e => {
-        this.props.trackNowInPlayer(e.target.id)
-    }
-
-    addTrack = e => {
-        this.props.addTrack(e.target.id)
-    }
+    timeOut = () => 
+        new Promise(resolve => {
+        setTimeout(() => {
+            this.setState(prevState => ({  loading: !prevState.loading }))
+        }, 3000);
+    });
 
     render() {
-        const { artist_info_success, artist_tracklist_success, artist_album_success  } = this.props;
+        const { artist_info_success, artist_tracklist_success, artist_album_success, history, addTrack, trackNowInPlayer } = this.props;
+        if (this.state.loading) return <Loading />
         return (
             <>
                 {
@@ -34,9 +36,10 @@ export class ArtistContainers extends Component {
                         artist_info_success={artist_info_success}
                         artist_tracklist_success={artist_tracklist_success}
                         artist_album_success={artist_album_success}
-                        playNow={this.trackNow}
-                        addTrack={this.addTrack}
-                    /> : <Loading />
+                        history={history}
+                        playNow={trackNowInPlayer}
+                        addTrack={addTrack}
+                    /> : null
                 }
             </>
         )
@@ -50,11 +53,10 @@ const mapStateToProps = state => ({
     error: state.music.error,
 })
 
-const mapDispatchToProps = dispatch => {
-    return {
-        artistInfo: url => dispatch(artistInfo(url)),
-        trackNowInPlayer: url => dispatch(trackNowInPlayer(url)),
-        addTrack: url => (dispatch(addTrack(url))),
-    }
-}
+const mapDispatchToProps = dispatch => ({
+    artistInfo: url => dispatch(artistInfo(url)),
+    trackNowInPlayer: url => dispatch(trackNowInPlayer(url)),
+    addTrack: url => (dispatch(addTrack(url))),
+})
+
 export default connect(mapStateToProps, mapDispatchToProps)(ArtistContainers)

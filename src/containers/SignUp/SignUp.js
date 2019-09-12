@@ -63,18 +63,14 @@ class SingUp extends Component {
 }
 
 
-const mapStateToProps = state => {
-    return {
-        auth: state.firebase.auth,
-        authError: state.auth.authError
-    }
-}
+const mapStateToProps = state => ({
+    auth: state.firebase.auth,
+    authError: state.auth.authError
+})
 
-const mapDispatchToProps = dispatch => {
-    return {
-        singUp: newUser => dispatch(singUp(newUser)),
-        googleLogin: () => dispatch(googleLogin())
-    }
-}
+const mapDispatchToProps = dispatch => ({
+    singUp: newUser => dispatch(singUp(newUser)),
+    googleLogin: () => dispatch(googleLogin())
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingUp)

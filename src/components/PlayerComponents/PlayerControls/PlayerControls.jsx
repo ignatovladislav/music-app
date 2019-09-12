@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronCircleRight, faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons'
 
 export const PlayerControls = props => {
-    // console.log(props)
     return (
         <div className='player_controls'>
             <div className='player_controls_icon previous_songs' >

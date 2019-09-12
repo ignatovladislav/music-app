@@ -6,8 +6,7 @@ import Player from '../Player/Player'
 
 export class Container extends Component {
     render() {
-        const { children } = this.props
-
+        const { children } = this.props;
         return (
             <div id='container'>
                 <Sidebar {...this.props} />
@@ -18,11 +17,9 @@ export class Container extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return{
-      auth: state.firebase.auth
-    }
-}
+const mapStateToProps = state => ({
+    auth: state.firebase.auth
+})
 
 const Layaut = withRouter(Container);
   

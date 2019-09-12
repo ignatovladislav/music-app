@@ -16,7 +16,7 @@ const SignedInLinks = props => {
     }
     
     {
-      !auth.photoURL ? <Link to={`/user`} className='profile_container logout' style={{textAlign: 'center'}}>{profile.initials}</Link> :
+      !auth.photoURL ? <Link to={`/user`} className='profile_container_name logout' style={{textAlign: 'center'}}>{profile.initials}</Link> :
       <Link to={`/user`} className='profile_container_ava logout' style={{height : '60px'}}>
         <img src={auth.photoURL} alt='avatar' className='avatar_user'/>
       </Link>
@@ -26,17 +26,13 @@ const SignedInLinks = props => {
 }
 
 
-const mapStateToProps = state => {
-  return {
-    auth: state.firebase.auth,
-    profile: state.firebase.profile
-  }
-}
+const mapStateToProps = state => ({
+  auth: state.firebase.auth,
+  profile: state.firebase.profile
+})
 
-const mapDispatchToProps = dispatch => {
-  return {
-    signOut: () => dispatch(signOut())
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  signOut: () => dispatch(signOut())
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignedInLinks)

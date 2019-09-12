@@ -19,7 +19,6 @@ export function* musicSaga() {
             url: `${url}/chart`
         });
         const songs = response.data;
-
         yield put(actions.addToSongsSuccess(songs));
 	} catch (error) {
 		yield put(actions.songsError(error));

@@ -38,7 +38,7 @@ export class SearchResult extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
     error: state.music.error,
     search_track_success: state.music.search_track_success,
     search_artist_success: state.music.search_artist_success,
@@ -47,12 +47,10 @@ const mapStateToProps = (state) => ({
     user_track: state.userMusic.user_track
 })
 
-const mapDispatchToProps = dispatch => {
-    return {
-        searchAllAction: url => (dispatch(searchAllAction(url))),
-        trackNowInPlayer: url => dispatch(trackNowInPlayer(url)),
-        addTrack: url => dispatch(addTrack(url)),
-    }
-}
+const mapDispatchToProps = dispatch => ({
+    searchAllAction: url => (dispatch(searchAllAction(url))),
+    trackNowInPlayer: url => dispatch(trackNowInPlayer(url)),
+    addTrack: url => dispatch(addTrack(url)),
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchResult)

@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { InfoAlbum } from '../../components/deezerMusic/Album/InfoAlbum';
 
-import { AddAllAlbum } from '../../components/AddAllAlbum/AddAllAlbum'
+import { AddAllAlbum } from '../../components/AddAllAlbum/AddAllAlbum';
+import { DeleteAllAlbum } from '../../components/AddAllAlbum/DeleteAllALbum';
 
 import play from '../../assets/play-button.png'
 
 export default class Container extends Component {
     render() {
-        const { album_now_success, playNow, addTrack } = this.props;
+        const { album_now_success, playNow, addTrack, addAlbum, state_button, deleteAlbum } = this.props;
         return (
             <div className='album_containers'>
                 <div className='catalog_header_album'>
@@ -23,7 +24,8 @@ export default class Container extends Component {
                     }
                 </div>     
                 {
-                    album_now_success ? <AddAllAlbum /> : null
+                    !state_button ? <AddAllAlbum id={album_now_success.id} addAlbum={addAlbum} /> : 
+                    <DeleteAllAlbum id={album_now_success.id} deleteAlbum={deleteAlbum} />
                 }           
                 { 
                     album_now_success ? album_now_success.tracks.data.map((el, index) => {

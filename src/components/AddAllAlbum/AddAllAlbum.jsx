@@ -1,10 +1,9 @@
 import React from 'react'
 
-
 export const AddAllAlbum = props => {
-    console.log(props)
+    const { id, addAlbum } = props;
     return (
-        <div className='add_all'>
+        <div className='add_all' id={id} onClick={addAlbum}>
             + Add all
         </div>
     )

@@ -13,7 +13,7 @@ export const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-firebase.firestore().settings({ timestampsInSnapshots: true });
+firebase.firestore();
 
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
 

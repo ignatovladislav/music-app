@@ -6,17 +6,14 @@ import Layaut from '../containers/Layaut/Layaut';
 export const PrivateRoute = ({ component: Component,  auth, ...props }) => {
   return (
     <>
-        <Layaut>
-            <Route
-              {...props}
-              render={innerProps =>
-                auth.uid ?
-                    <Component {...innerProps} />
-                    :
-                    <Redirect to="/" />
-              }
-            />
-    </Layaut>
+      <Layaut>
+        <Route
+          {...props}
+          render={ innerProps =>
+            auth.uid ? <Component {...innerProps} /> : <Redirect to="/" />
+          }
+        />
+      </Layaut>
     </>
   );
 };

@@ -54,18 +54,14 @@ class Login extends Component {
 }
 
 
-const mapStateToProps = state => {
-    return {
-        authError: state.auth.authError,
-        auth: state.firebase.auth
-    }
-}
+const mapStateToProps = state => ({
+    authError: state.auth.authError,
+    auth: state.firebase.auth
+})
 
-const mapDispatchToProps = dispatch => {
-    return {
-        singIn: (creds) => dispatch(singIn(creds)),
-        googleLogin: () => dispatch(googleLogin())
-    }
-}
+const mapDispatchToProps = dispatch => ({
+    singIn: (creds) => dispatch(singIn(creds)),
+    googleLogin: () => dispatch(googleLogin())
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

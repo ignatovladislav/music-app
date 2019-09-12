@@ -1,17 +1,36 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { playlistTrackList, trackNowInPlayer } from '../../store/actions/musicActions'
-import { addTrack, addPlaylist } from '../../store/actions/userMusicActions'
-import * as types from "../../store/actionTypes";
+import { addTrack, addPlaylist, deletePlaylist } from '../../store/actions/userMusicActions'
 import './PlaylistContainers.css'
 
 import { Loading } from '../../components/Loading/Loading';
 import Container from './Container';
 
 export class PlaylistContainers extends Component {
-    state = { playlist_info: null, addTrack: false}
+    state = { loading: true, add_album: false }
     componentDidMount() {
-        this.props.playlistTrackList(this.props.history.location.pathname.split('/')[2])
+        if(this.contains(this.props.user_playlist, this.props.playlist_info)) {
+            this.setState({ add_album: true })
+            this.timeOut()
+            this.props.playlistTrackList(this.props.history.location.pathname.split('/')[2])   
+        } else {
+            this.timeOut()
+            this.props.playlistTrackList(this.props.history.location.pathname.split('/')[2])   
+        }
+       
+    }
+
+    componentDidUpdate(prevProps) {
+        if(prevProps.user_playlist !== this.props.user_playlist) {
+            if (this.contains(this.props.user_playlist, this.props.playlist_info)) {
+                this.setState({ add_album: true })
+            }
+        }
+    }
+
+    contains = (array, obj) => {
+        return array.some(item => item.id === obj.id)
     }
 
     addTrack = e => {   
@@ -24,41 +43,56 @@ export class PlaylistContainers extends Component {
 
     addPlaylist = e => {
         this.props.addPlaylist(e.target.id)
+        this.setState(prevState => ({ add_album: !prevState.add_album }))
     }
 
+    deletePlaylist = e => {
+        this.props.deletePlaylist(e.target.id)
+        this.setState(prevState => ({ add_album: !prevState.add_album }))
+    }
+
+    timeOut = () => 
+            new Promise(resolve => {
+            setTimeout(() => {
+                this.setState(prevState => ({  loading: !prevState.loading }))
+            }, 2000);
+    });
+    
+
     render() {
-        const { playlist_now, playlist_info } = this.props;
+        const { playlist_now, playlist_info, user_playlist } = this.props;
+        const { loading, add_album } = this.state;
+
+        if (loading) return <Loading />
         return (
             <>
-                {
-                    playlist_now && playlist_info ? <Container 
-                                                            playlist_now={playlist_now} 
-                                                            playlist_info={playlist_info} 
-                                                            playNow={this.trackNow}
-                                                            addTrack={this.addTrack}
-                                                            addPlaylist={this.addPlaylist}
-                                                        /> : <Loading />
-                }
+                <Container 
+                    user_playlist={user_playlist}
+                    playlist_now={playlist_now} 
+                    playlist_info={playlist_info} 
+                    state_button={add_album}
+                    playNow={this.trackNow}
+                    addTrack={this.addTrack}
+                    addPlaylist={this.addPlaylist}
+                    deletePlaylist={this.deletePlaylist}
+                /> 
             </>
         )
     }
 }
 
-const mapStateToProps = state => {
-    return {
-      playlist_now: state.music.playlist_now,
-      playlist_info: state.music.playlist_info,
-      user_track: state.userMusic.user_track
-    }
-}
+const mapStateToProps = state => ({
+    playlist_now: state.music.playlist_now,
+    playlist_info: state.music.playlist_info,
+    user_playlist: state.userMusic.user_playlist
+})
 
-const mapDispatchToProps = dispatch => {
-    return {
-        playlistTrackList: (creds) => dispatch(playlistTrackList(creds)),
-        addTrack: url => dispatch(addTrack(url)),
-        trackNowInPlayer: url => dispatch(trackNowInPlayer(url)),
-        addPlaylist: url => dispatch(addPlaylist(url))
-    }
-}
+const mapDispatchToProps = dispatch => ({
+    playlistTrackList: (creds) => dispatch(playlistTrackList(creds)),
+    addTrack: url => dispatch(addTrack(url)),
+    trackNowInPlayer: url => dispatch(trackNowInPlayer(url)),
+    addPlaylist: url => dispatch(addPlaylist(url)),
+    deletePlaylist: url => dispatch(deletePlaylist(url)),
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaylistContainers);
