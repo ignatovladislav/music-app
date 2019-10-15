@@ -12,11 +12,11 @@ export class HomePageUser extends Component {
   }
 
   render() {
-    const { songs } = this.props;
+    const { isFetching } = this.props;
     return (
       <div className='main_container_chart'>
         {
-          songs ? <ContainerToMusic {...this.props}/> : <Loading />
+          !isFetching ? <ContainerToMusic {...this.props}/> : <Loading />
         }
       </div>
     )
@@ -24,6 +24,7 @@ export class HomePageUser extends Component {
 }
 
 const mapStateToProps = state => ({
+  isFetching: state.music.isFetching,
   songs: state.music.songs,
   error: state.music.error,
   track_now: state.music.track_now

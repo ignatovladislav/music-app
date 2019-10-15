@@ -1,8 +1,12 @@
 import * as types from "../actionTypes";
 
-export const addToSongs = payload => ({
+export const addToSongs = () => ({
   type: types.ADD_SONGS,
-  payload 
+})
+
+export const songsLoadind = payload => ({
+  type: types.LOADING,
+  payload
 })
 
 export const addToSongsSuccess = payload => ({
@@ -15,20 +19,15 @@ export const songsError = (payload ) => ({
   payload 
 });
 
-export const addToSongsGenre = payload => ({
-  type: types.ADD_SONGS_GENRE_MUSIC,
-  payload 
-})
-
-export const addToSongsGenreSuccess = payload => ({
-  type: types.ADD_SONGS_GENRE_MUSIC_SUCCESS,
-  payload 
-})
-
 export const playlistTrackList = payload => ({
   type: types.PLAYLIST_NOW,
   payload 
 });
+
+export const plalistLoadind = payload => ({
+  type: types.LOADING,
+  payload
+})
 
 export const playlistInfoSuccess = payload => ({
   type: types.PLAYLIST_INFO_SUCCESS,
@@ -46,6 +45,11 @@ export const albumTrackList = payload => ({
   payload 
 });
 
+export const albumLoadind = payload => ({
+  type: types.LOADING,
+  payload
+})
+
 export const albumTrackListSuccess = payload => ({
   type: types.ALBUM_NOW_SUCCESS,
   payload 
@@ -55,6 +59,11 @@ export const artistInfo = payload => ({
   type: types.ARTIST_NOW,
   payload 
 });
+
+export const artisLoadind = payload => ({
+  type: types.LOADING,
+  payload
+})
 
 export const artistInfoSuccess = payload => ({
   type: types.ARTIST_INFO_SUCCESS,

@@ -9,14 +9,14 @@ import { Loading } from '../../components/Loading/Loading';
 import Container from './Conteiner'
 
 export class CountryChart extends Component {
-    state = { loading: true, add_album: false }
+    state = { state_button: false }
     componentDidMount() {
         if (this.contains(this.props.user_playlist, this.props.history.location.pathname.split('/')[2])) {
-            this.setState({ add_album: true })
-            this.timeOut()
+            this.setState({ state_button: true })
+            // this.timeOut()
             this.props.playlistTrackList(this.props.history.location.pathname.split('/')[2])   
         } else {
-            this.timeOut()
+            // this.timeOut()
             this.props.playlistTrackList(this.props.history.location.pathname.split('/')[2])   
         }
        
@@ -52,29 +52,23 @@ export class CountryChart extends Component {
         this.setState(prevState => ({ add_album: !prevState.add_album }))
     }
 
-    timeOut = () => 
-        new Promise(resolve => {
-        setTimeout(() => {
-            this.setState(prevState => ({  loading: !prevState.loading }))
-        }, 2000);
-    });
     render() {
-        const { playlist_info, playlist_now } = this.props;
-        const { loading, add_album } = this.state;
+        const { playlist_info, playlist_now, isFetching } = this.props;
+        const { state_button } = this.state;
 
-        if (loading) return <Loading />
+        console.log(this.props)
         return (
             <>
                 {
-                    playlist_now && playlist_info ?  <Container 
+                    !isFetching && playlist_now && playlist_info ?  <Container 
                                                         playlist_now={playlist_now} 
                                                         playlist_info={playlist_info} 
                                                         playNow={this.trackNow}
                                                         addTrack={this.addTrack}
                                                         addPlaylist={this.addPlaylist}
                                                         deletePlaylist={this.deletePlaylist}
-                                                        state_button={add_album}
-                                                    /> : null
+                                                        state_button={state_button}
+                                                    /> : <Loading />
                 }
                 
             </>
@@ -85,6 +79,7 @@ export class CountryChart extends Component {
 const CountryChartContainer = withRouter(CountryChart)
 
 const mapStateToProps = state => ({
+    isFetching: state.music.isFetching,
     playlist_now: state.music.playlist_now,
     playlist_info: state.music.playlist_info,
     user_playlist: state.userMusic.user_playlist
