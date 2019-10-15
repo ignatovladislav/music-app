@@ -13,10 +13,8 @@ export class CountryChart extends Component {
     componentDidMount() {
         if (this.contains(this.props.user_playlist, this.props.history.location.pathname.split('/')[2])) {
             this.setState({ state_button: true })
-            // this.timeOut()
             this.props.playlistTrackList(this.props.history.location.pathname.split('/')[2])   
         } else {
-            // this.timeOut()
             this.props.playlistTrackList(this.props.history.location.pathname.split('/')[2])   
         }
        
@@ -55,8 +53,6 @@ export class CountryChart extends Component {
     render() {
         const { playlist_info, playlist_now, isFetching } = this.props;
         const { state_button } = this.state;
-
-        console.log(this.props)
         return (
             <>
                 {

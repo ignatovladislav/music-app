@@ -8,7 +8,7 @@ export const Footer = () => {
     return (
         <footer className='footer_container'>
             <div className='footer_container_ifraime'>
-                <h5>By Ignatov Vladislav</h5>
+                <h5>By Ihnatov Vladyslav</h5>
             </div>
             <div className='social_network'>
                 <a href='https://www.instagram.com/deezer/'>
